@@ -13,7 +13,9 @@ import Footer from "./components/Footer";
 import Login from "./components/Users/Login";
 import Register from "./components/Users/Register";
 
-
+//store imports
+import StoreHome from "./components/Store/StoreHome";
+import StoreAddProductForm from "./components/Store/StoreAddProductForm";
 
 function App() {
   useEffect(() => {}, []);
@@ -25,7 +27,12 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<Register />} />
       
-       
+
+        <Route path="/store" element={<StoreHome />} />
+        <Route
+          path="/store/product/add-product"
+          element={<StoreAddProductForm />}
+        />
       </Routes>
       <Footer />
     </BrowserRouter>
