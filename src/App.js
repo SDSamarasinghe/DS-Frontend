@@ -18,6 +18,9 @@ import StoreHome from "./components/Store/StoreHome";
 import StoreAddProductForm from "./components/Store/StoreAddProductForm";
 import StoreAdminProductsEdit from "./components/Store/StoreAdminProductsEdit";
 
+//order imports
+import StoreOrderForm from "./components/Store/StoreOrderForm";
+
 function App() {
   useEffect(() => {}, []);
 
@@ -39,7 +42,12 @@ function App() {
           path="/store/store-admin-products/edit/:pid"
           element={<StoreAdminProductsEdit />}
         />
-        
+
+        <Route
+          path="/store/order/store-order-create/:product/:quantity/:price"
+          element={<StoreOrderForm />}
+        />
+
       </Routes>
       <Footer />
     </BrowserRouter>
