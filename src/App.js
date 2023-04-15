@@ -16,6 +16,7 @@ import Register from "./components/Users/Register";
 //store imports
 import StoreHome from "./components/Store/StoreHome";
 import StoreAddProductForm from "./components/Store/StoreAddProductForm";
+import StoreAdminProductsEdit from "./components/Store/StoreAdminProductsEdit";
 
 function App() {
   useEffect(() => {}, []);
@@ -33,6 +34,12 @@ function App() {
           path="/store/product/add-product"
           element={<StoreAddProductForm />}
         />
+
+        <Route
+          path="/store/store-admin-products/edit/:pid"
+          element={<StoreAdminProductsEdit />}
+        />
+        
       </Routes>
       <Footer />
     </BrowserRouter>
