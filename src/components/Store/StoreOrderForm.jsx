@@ -42,14 +42,14 @@ const StoreOrderForm = () => {
         quantity: quantity,
       };
     });
-
+//must check endpoint
     axios
       .get(`http://localhost:8000/api/store/product/${paramsProduct}`)
       .then((res) => {
         setProduct(res.data.product);
       });
   }, [paramsProduct, price, quantity]);
-
+//must check endpoint
   useEffect(() => {
     axios
       .get(`http://localhost:8000/api/users/current`, { withCredentials: true })
@@ -130,7 +130,7 @@ const StoreOrderForm = () => {
     } else {
       setValid([]);
     }
-
+//must check endpoint
     e.preventDefault();
     axios
       .post("http://localhost:8000/api/store/orders", order)

@@ -9,7 +9,7 @@ import { useRef } from "react";
 
 const StoreAdminOrders = () => {
   const [products, setProducts] = useState([]);
-
+//must check endpoint
   useEffect(() => {
     axios.get(`http://localhost:8000/api/store/products`).then((res) => {
       setProducts(res.data.products);

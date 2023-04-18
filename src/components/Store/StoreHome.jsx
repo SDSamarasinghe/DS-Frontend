@@ -5,7 +5,7 @@ import StoreProductSingle from "./StoreProductSingle";
 
 const StoreHome = () => {
   const [products, setProducts] = useState([]);
-
+//must check endpoint
   useEffect(() => {
     axios.get(`http://20.241.129.61:5000/api/Products`).then((res) => {
       setProducts(res.data.products);

@@ -8,7 +8,7 @@ const StoreProductsDetails = () => {
   const [product, setProduct] = useState();
   let params = useParams();
   let navigate = useNavigate();
-
+//must check endpoint
   useEffect(() => {
     axios
       .get(`http://localhost:8000/api/store/product/${params.id}`)

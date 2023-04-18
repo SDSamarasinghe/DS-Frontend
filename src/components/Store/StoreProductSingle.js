@@ -5,7 +5,7 @@ import "./Store.css";
 
 const StoreProductSingle = ({ img, name, price, id }) => {
   const navigate = useNavigate();
-
+//must check endpoint
   const deleteProduct = async () => {
     const { status } = await axios.delete(
       `http://20.241.129.61:5000/api/Products/${id}`

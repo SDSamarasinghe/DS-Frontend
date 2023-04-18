@@ -7,7 +7,7 @@ import StoreProductSingle from "./StoreProductSingle";
 const StoreProducts = () => {
   let params = useParams();
   const [products, setProducts] = useState(undefined);
-
+//must check endpoint
   useEffect(() => {
     axios
       .get(`http://localhost:8000/api/store/products/${params.category}`)
@@ -18,7 +18,7 @@ const StoreProducts = () => {
 
   const onSearch = (e) => {
     const pName = e.target.value;
-
+//must check endpoint
     if (pName === "") {
       axios
         .get(`http://localhost:8000/api/store/products/${params.category}`)

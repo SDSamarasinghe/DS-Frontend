@@ -7,7 +7,7 @@ import jsPDF from "jspdf";
 
 const StoreAdminPayments = () => {
   const [payments, setPayments] = useState([]);
-
+//must check endpoint
   useEffect(() => {
     axios.get(`http://localhost:8000/api/store/payments`).then((res) => {
       setPayments(res.data.payments);

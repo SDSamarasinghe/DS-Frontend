@@ -34,7 +34,7 @@ const StoreAddProductForm = () => {
       setErrors(true);
       return;
     }
-
+//must check endpoint
     axios
       .post("http://20.241.129.61:5000/api/Products", product)
       .then((response) => {

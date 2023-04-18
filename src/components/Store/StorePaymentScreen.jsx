@@ -8,7 +8,7 @@ const StorePaymentScreen = () => {
   const { orderId } = useParams();
   const [order, setOrder] = useState();
   const [product, setProduct] = useState();
-
+//must check endpoint
   useState(() => {
     axios
       .get(`http://localhost:8000/api/store/order/${orderId}`)
@@ -54,7 +54,7 @@ const StorePaymentScreen = () => {
       paidBy: owner,
       paypalUserName: paypalEmail,
     };
-
+//must check endpoint
     axios
       .post(`http://localhost:8000/api/store/payment`, payment)
       .then((res) => {

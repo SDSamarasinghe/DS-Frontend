@@ -7,7 +7,7 @@ import jsPDF from "jspdf";
 
 const StoreAdminOrders = () => {
   const [orders, setOrders] = useState([]);
-
+//must check endpoint
   useEffect(() => {
     axios.get(`http://localhost:8000/api/store/orders`).then((res) => {
       setOrders(res.data.orders);
