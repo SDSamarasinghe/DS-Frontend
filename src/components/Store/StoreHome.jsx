@@ -5,10 +5,10 @@ import StoreProductSingle from "./StoreProductSingle";
 
 const StoreHome = () => {
   const [products, setProducts] = useState([]);
-
+//must check endpoint
   useEffect(() => {
-    axios.get(`http://20.241.129.61:5000/api/Products`).then((res) => {
-      setProducts(res.data.products);
+    axios.get(`http://florage-api.pasinduprabhashitha.com/api/products/`).then((res) => {
+      setProducts(res.data);
     });
   }, []);
 
@@ -190,11 +190,11 @@ const StoreHome = () => {
             products.map((prod) => (
               <div className="col mt-4">
                 <StoreProductSingle
-                  key={prod._id}
+                  key={prod.id}
                   img={prod.image}
                   title={prod.name}
                   price={prod.price}
-                  id={prod._id}
+                  id={prod.id}
                 />
               </div>
             ))}

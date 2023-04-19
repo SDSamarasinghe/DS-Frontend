@@ -9,6 +9,9 @@ const StoreAddProductForm = () => {
   const [img, setImg] = useState("");
   const [price, setPrice] = useState("");
   const [stockCount, setStockCount] = useState("");
+  const [buyPrice, setbuyPrice] = useState("");
+  const [sellPrice, setsellPrice] = useState("");
+  const [category, setCategory] = useState("");
   const navigate = useNavigate();
   const [errors, setErrors] = useState("");
 
@@ -20,6 +23,9 @@ const StoreAddProductForm = () => {
       image: img,
       price,
       stockCount,
+      buyPrice,
+      sellPrice,
+      category,
     
     };
 
@@ -28,15 +34,18 @@ const StoreAddProductForm = () => {
       product.description.length <= 0 ||
       product.image.length <= 0 ||
       product.price.length <= 0 ||
-      product.stockCount.length <= 0
+      product.stockCount.length <= 0 ||
+      product.sellPrice.length <= 0 ||
+      product.stockCount.length <= 0 ||
+      product.category.length <= 0
    
     ) {
       setErrors(true);
       return;
     }
-
+//must check endpoint
     axios
-      .post("http://20.241.129.61:5000/api/Products", product)
+      .post("http://florage-api.pasinduprabhashitha.com/api/inventory/products", product)
       .then((response) => {
         swal({
           title: "Product Added Successfully!",
@@ -132,6 +141,45 @@ const StoreAddProductForm = () => {
                 onChange={(e) => {
                   setStockCount(e.target.value);
                 }}
+              />
+            </div>
+
+            <div className="form-group my-4">
+              <label className="my-1">Buy Price</label>
+              <input
+                type="number"
+                className="form-control"
+                placeholder="Unit Price"
+                value={buyPrice}
+                onChange={(e) => {
+                  setbuyPrice(e.target.value);
+                }}
+              />
+            </div>
+
+            <div className="form-group my-4">
+              <label className="my-1">Sell Price</label>
+              <input
+                type="number"
+                className="form-control"
+                placeholder="Unit Price"
+                value={sellPrice}
+                onChange={(e) => {
+                  setsellPrice(e.target.value);
+                }}
+              />
+            </div>
+
+            <div className="form-group mt-4">
+              <label className="my-1">Category</label>
+              <input
+                type="text"
+                className="form-control mb-2"
+                value={category}
+                onChange={(e) => {
+                  setCategory(e.target.value);
+                }}
+                placeholder="Category"
               />
             </div>
 
