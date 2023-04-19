@@ -33,7 +33,7 @@ const StoreProductSingle = ({ img, name, price, id }) => {
 
         <button
           onClick={() => {
-            navigate(`/store/products/product/${id}`);
+            navigate(`http://20.241.129.61:5000/api/Products/${id}`);
           }}
           id="store-store-details-button"
           className="btn btn-success"
