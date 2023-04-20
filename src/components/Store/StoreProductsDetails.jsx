@@ -22,7 +22,7 @@ const StoreProductsDetails = () => {
       <div className="latest-store-details-cover position-relative">
         <img src="https://i.ibb.co/rkfrhCm/banner18.webp" alt="" />
         <div className="store-products-top text-secondary position-absolute top-50 start-50 translate-middle">
-          <p> Home > Products > {product && product.name} </p>
+          <p> Home  Products  {product && product.name} </p>
         </div>
       </div>
       <div className="d-flex">

@@ -44,39 +44,13 @@ const StoreOrderForm = () => {
     });
 //must check endpoint
     axios
-      .get(`http://localhost:8000/api/store/product/${paramsProduct}`)
+      .get(`http://florage-api.pasinduprabhashitha.com/api/products/${paramsProduct}`)
       .then((res) => {
-        setProduct(res.data.product);
+        setProduct(res.data);
       });
   }, [paramsProduct, price, quantity]);
 //must check endpoint
-  useEffect(() => {
-    axios
-      .get(`http://localhost:8000/api/users/current`, { withCredentials: true })
-      .then((res) => {
-        setUser(res.data);
-
-        setOrder((order) => {
-          return {
-            ...order,
-            user: res.data._id,
-          };
-        });
-      })
-      .catch((error) => {
-        swal({
-          title:
-            "Sorry, You haven't login to the application, Please login to continue",
-          icon: "warning",
-          confirmButtonText: "OK",
-          confirmButtonColor: "#12af39",
-          className: "store-swal-button",
-        }).then(() => {
-          navigate("/login");
-        });
-      });
-  }, []);
-
+  
   const onFormChange = (e) => {
     const { name, value } = e.target;
 
@@ -143,7 +117,7 @@ const StoreOrderForm = () => {
           confirmButtonColor: "#12af39",
           className: "store-swal-button",
         }).then(() => {
-          navigateToCheckout(res.data._id);
+          navigateToCheckout(res.data.id);
         });
       })
       .catch((errr) => {
@@ -297,7 +271,9 @@ const StoreOrderForm = () => {
             />
             <div class="invalid-feedback">Please enter a valid zip code.</div>
           </div>
+          
           <div class="col-12"></div>
+          <br/>
           <div class="col-12">
             <button
               type="submit"
