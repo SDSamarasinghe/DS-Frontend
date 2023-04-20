@@ -11,8 +11,8 @@ const StoreAdminOrders = () => {
   const [products, setProducts] = useState([]);
 //must check endpoint
   useEffect(() => {
-    axios.get(`http://localhost:8000/api/store/products`).then((res) => {
-      setProducts(res.data.products);
+    axios.get(`http://florage-api.pasinduprabhashitha.com/api/products/`).then((res) => {
+      setProducts(res.data);
     });
   }, []);
 
@@ -26,16 +26,16 @@ const StoreAdminOrders = () => {
     }).then((willDelete) => {
       if (willDelete) {
         axios
-          .delete(`http://localhost:8000/api/store/products/${id}`)
+          .delete(`http://florage-api.pasinduprabhashitha.com/api/inventory/products/${id}`)
           .then(() => {
             swal("Product Deleted Successfully!", {
               icon: "success",
             });
 
             axios
-              .get(`http://localhost:8000/api/store/products`)
+              .get(`http://florage-api.pasinduprabhashitha.com/api/products/`)
               .then((res) => {
-                setProducts(res.data.products);
+                setProducts(res.data);
               });
           });
       }
@@ -173,7 +173,7 @@ const StoreAdminOrders = () => {
                     </td>
                     <td>{prod.category}</td>
                     <td style={{ width: "300px" }}>
-                      <Link to={`/store/store-admin-products/edit/${prod._id}`}>
+                      <Link to={`/store/store-admin-products/edit/${prod.id}`}>
                         <button
                           type="button"
                           class="btn btn-outline-warning mx-2"
@@ -183,7 +183,7 @@ const StoreAdminOrders = () => {
                       </Link>
 
                       <button
-                        onClick={() => deleteProduct(prod._id)}
+                        onClick={() => deleteProduct(prod.id)}
                         type="button"
                         class="btn btn-outline-danger"
                       >

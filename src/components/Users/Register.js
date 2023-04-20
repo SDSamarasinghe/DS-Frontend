@@ -44,7 +44,7 @@ const Register = () => {
 
     if (re.test(user.email)) {
       const { res, status } = await axios.post(
-        "http://localhost:8000/api/users/sign-up",
+        "http://localhost:3000/api/users/sign-up",
         user
       );
 
