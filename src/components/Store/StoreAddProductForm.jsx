@@ -54,10 +54,12 @@ const StoreAddProductForm = () => {
           confirmButtonColor: "#12af39",
           className: "store-swal-button",
         }).then(() => {
-          navigate(`/store/products/product/${response.data._id}`);
+          navigate(`/store/store-admin-products`);
         });
       });
   };
+
+  
 
   return (
     <div className="store-add-product py-4 d-flex align-items-center flex-column justify-content-center">

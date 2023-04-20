@@ -4,13 +4,16 @@ import { useNavigate, useParams } from "react-router";
 import swal from "sweetalert";
 
 const StoreAdminProductsEdit = () => {
-    const [name, setName] = useState("");
-    const [description, setdescription] = useState("");
-    const [img, setImg] = useState("");
-    const [price, setPrice] = useState("");
-    const [stockCount, setStockCount] = useState("");
-    const navigate = useNavigate();
-    const [errors, setErrors] = useState("");
+  const [name, setName] = useState("");
+  const [description, setdescription] = useState("");
+  const [img, setImg] = useState("");
+  const [price, setPrice] = useState("");
+  const [stockCount, setStockCount] = useState("");
+  const [buyPrice, setbuyPrice] = useState("");
+  const [sellPrice, setsellPrice] = useState("");
+  const [category, setCategory] = useState("");
+  const navigate = useNavigate();
+  const [errors, setErrors] = useState("");
 
   const { pid } = useParams();
 
@@ -22,10 +25,13 @@ const StoreAdminProductsEdit = () => {
       image: img,
       price,
       stockCount,
+      buyPrice,
+      sellPrice,
+      category,
     };
 
     axios
-      .put(`http://localhost:8000/api/store/products/${pid}`, product)
+      .put(`http://florage-api.pasinduprabhashitha.com/api/inventory/products/${pid}`, product)
       .then((response) => {
         swal({
           title: "Product Updated Successfully!",
@@ -40,12 +46,15 @@ const StoreAdminProductsEdit = () => {
   };
 
   useEffect(() => {
-    axios.get(`http://localhost:8000/api/store/product/${pid}`).then((res) => {
-      setName(res.data.product.name);
-      setdescription(res.data.product.description);
-      setImg(res.data.product.image);
-      setPrice(res.data.product.price);
-      setStockCount(res.data.product.stockCount);
+    axios.get(`http://florage-api.pasinduprabhashitha.com/api/products/${pid}`).then((res) => {
+      setName(res.data.name);
+      setdescription(res.data.description);
+      setImg(res.data.image);
+      setPrice(res.data.price);
+      setStockCount(res.data.stockCount);
+      setbuyPrice(res.data.buyPrice);
+      setsellPrice(res.data.sellPrice);
+      setCategory(res.data.setCategory);
     });
   }, [pid]);
 
@@ -73,19 +82,6 @@ const StoreAdminProductsEdit = () => {
               />
             </div>
             
-            <div className="form-group my-2">
-              <label className="my-1">Name</label>
-              <input
-                type="text"
-                className="form-control"
-                aria-describedby="emailHelp"
-                placeholder="Description"
-                value={description}
-                onChange={(e) => {
-                  setdescription(e.target.value);
-                }}
-              />
-            </div>
             <div className="form-group my-4">
               <label className="my-1">Image</label>
               <input
@@ -100,9 +96,35 @@ const StoreAdminProductsEdit = () => {
             </div>
 
             <div className="form-group my-4">
-              <label className="my-1">Unit Price</label>
+              <label className="my-1">Description</label>
+              <textarea
+                type="text"
+                className="form-control"
+                placeholder="Description"
+                value={description}
+                onChange={(e) => {
+                  setdescription(e.target.value);
+                }}
+              />
+            </div>
+
+            <div className="form-group my-4">
+              <label className="my-1">Stock Quantity</label>
               <input
                 type="number"
+                className="form-control"
+                placeholder="Unit Price"
+                value={stockCount}
+                onChange={(e) => {
+                  setStockCount(e.target.value);
+                }}
+              />
+            </div>
+
+            <div className="form-group my-4">
+              <label className="my-1">Unit Price</label>
+              <input
+                
                 className="form-control"
                 placeholder="Unit Price"
                 value={price}
@@ -112,18 +134,47 @@ const StoreAdminProductsEdit = () => {
               />
             </div>
 
+
             <div className="form-group my-4">
-              <label className="my-1">Stock Quantity</label>
-              <textarea
-                type="text"
+              <label className="my-1">Buy Price</label>
+              <input
+                type="number"
                 className="form-control"
-                placeholder="Long Description"
-                value={stockCount}
+                placeholder="Buy Price"
+                value={buyPrice}
                 onChange={(e) => {
-                  setStockCount(e.target.value);
+                  setbuyPrice(e.target.value);
                 }}
               />
             </div>
+
+            <div className="form-group my-4">
+              <label className="my-1">Sell Price</label>
+              <input
+                type="number"
+                className="form-control"
+                placeholder="Sell Price"
+                value={sellPrice}
+                onChange={(e) => {
+                  setsellPrice(e.target.value);
+                }}
+              />
+            </div>
+
+            <div className="form-group my-2">
+              <label className="my-1">Category</label>
+              <input
+                type="email"
+                className="form-control"
+                aria-describedby="emailHelp"
+                placeholder="Category"
+                value={category}
+                onChange={(e) => {
+                  setCategory(e.target.value);
+                }}
+              />
+            </div>
+
 
             <button
               type="submit"
