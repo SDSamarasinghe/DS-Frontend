@@ -8,12 +8,12 @@ const StoreProductsDetails = () => {
   const [product, setProduct] = useState();
   let params = useParams();
   let navigate = useNavigate();
-//must check endpoint
+
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/api/store/product/${params.id}`)
+      .get(`http://florage-api.pasinduprabhashitha.com/api/products/${params.id}`)
       .then((res) => {
-        setProduct(res.data.product);
+        setProduct(res.data);
       });
   }, [params]);
 
@@ -47,10 +47,7 @@ const StoreProductsDetails = () => {
                   <h2 className="my-3" style={{ color: "#12af39" }}>
                     ${product && product.price}
                   </h2>
-                  <h6 style={{ color: "#777" }}>
-                    {product && product.smallDes}
-                  </h6>
-                  <p className="my-3">{product && product.longDes}</p>
+                  <p className="my-3">{product && product.description}</p>
                   <div className="quantity-area col-4 my-3">
                     <label className="form-label">Choose your quantity:</label>
                     <input
@@ -70,7 +67,7 @@ const StoreProductsDetails = () => {
                       disabled={quantity <= 0}
                       onClick={() => {
                         navigate(
-                          `/store/order/store-order-create/${product._id}/${quantity}/${product.price}`
+                          `/store/order/store-order-create/${product.id}/${quantity}/${product.price}`
                         );
                       }}
                       id="product-details-buy-now"
