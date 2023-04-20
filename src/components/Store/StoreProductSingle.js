@@ -8,7 +8,7 @@ const StoreProductSingle = ({ img, name, price, id }) => {
 //must check endpoint
   const deleteProduct = async () => {
     const { status } = await axios.delete(
-      `http://florage-api.pasinduprabhashitha.com/api/products/${id}`
+      `http://florage-api.pasinduprabhashitha.com/api/Products/${id}`
     );
 
     alert("Product Deleted Successfully");
@@ -33,7 +33,7 @@ const StoreProductSingle = ({ img, name, price, id }) => {
 
         <button
           onClick={() => {
-            navigate(`http://20.241.129.61:5000/api/Products/${id}`);
+            navigate(`/store/products/product/${id}`);
           }}
           id="store-store-details-button"
           className="btn btn-success"
