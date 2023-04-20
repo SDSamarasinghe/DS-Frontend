@@ -48,9 +48,10 @@ const StoreProductsDetails = () => {
                     ${product && product.price}
                   </h2>
                   <p className="my-3">{product && product.description}</p>
-                  <div className="quantity-area col-4 my-3">
+                  <div className="quantity-area col-4 my-3" >
                     <label className="form-label">Choose your quantity:</label>
                     <input
+                   
                       type="number"
                       className={`form-control col-2 ${
                         quantity < 0 && "is-invalid"
