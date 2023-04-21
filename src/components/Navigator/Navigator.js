@@ -27,7 +27,7 @@ const Navigator = () => {
               >
                 <ul className="site-menu js-clone-nav mr-auto d-none d-lg-block">
                   <li>
-                    <Link to="/">
+                    <Link to="/store">
                       <span>Home</span>
                     </Link>
                   </li>
