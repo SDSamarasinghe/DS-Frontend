@@ -46,7 +46,7 @@ const StoreAdminProductsEdit = () => {
   };
 
   useEffect(() => {
-    axios.get(`http://florage-api.pasinduprabhashitha.com/api/products/${pid}`).then((res) => {
+    axios.get(`http://florage-api.pasinduprabhashitha.com/api/inventory/products/${pid}`).then((res) => {
       setName(res.data.name);
       setdescription(res.data.description);
       setImg(res.data.image);
@@ -54,7 +54,7 @@ const StoreAdminProductsEdit = () => {
       setStockCount(res.data.stockCount);
       setbuyPrice(res.data.buyPrice);
       setsellPrice(res.data.sellPrice);
-      setCategory(res.data.setCategory);
+      setCategory(res.data.category);
     });
   }, [pid]);
 
