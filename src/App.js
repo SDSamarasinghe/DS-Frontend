@@ -17,6 +17,7 @@ import Register from "./components/Users/Register";
 import StorePaymentScreen from "./components/Store/StorePaymentScreen";
 import StoreAdminProductsEdit from "./components/Store/StoreAdminProductsEdit";
 import StoreAdminProducts from "./components/Store/StoreAdminProducts";
+import StoreShoppingCart from "./components/Store/StoreShoppingCart";
 import StoreAdminOrders from "./components/Store/StoreAdminOrders";
 import StoreAdminPayments from "./components/Store/StoreAdminPayments";
 import StoreHome from "./components/Store/StoreHome";
@@ -71,6 +72,12 @@ function App() {
           path="/store/store-admin-products/edit/:pid"
           element={<StoreAdminProductsEdit />}
         />
+        <Route
+          path="/store/store-shopping-cart"
+          element={<StoreShoppingCart />}
+        />
+
+
 
       </Routes>
       <Footer />
