@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import StoreProductSingle from "./StoreProductSingle";
+import oil from "./img/essential-oils.jpg"
+import basil from "./img/basil.jpg"
 
 const StoreHome = () => {
   const [products, setProducts] = useState([]);
@@ -116,7 +118,7 @@ const StoreHome = () => {
           <div className="category col-3">
             <Link to="/store/products/vegetables">
               <img
-                src="https://i.ibb.co/jLFzMwR/Cat1.jpg"
+                src={basil}
                 style={{
                   width: "300px",
                   height: "500px",
@@ -175,7 +177,7 @@ const StoreHome = () => {
         <img src="https://i.ibb.co/XJSwxr6/Cover1.jpg" alt="" />
       </div> */}
       <div className="latest-store-cover my-4">
-        <img src="https://i.ibb.co/XJSwxr6/Cover1.jpg" alt="" />
+        <img src={oil} alt="" />
       </div>
 
       <div className="latest-store-items p-4">
