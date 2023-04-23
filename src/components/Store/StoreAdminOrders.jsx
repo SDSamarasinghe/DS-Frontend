@@ -9,8 +9,8 @@ const StoreAdminOrders = () => {
   const [orders, setOrders] = useState([]);
 //must check endpoint
   useEffect(() => {
-    axios.get(`http://localhost:8000/api/store/orders`).then((res) => {
-      setOrders(res.data.orders);
+    axios.get(`http://florage-api.pasinduprabhashitha.com/api/Order`).then((res) => {
+      setOrders(res.data);
     });
   }, []);
 
@@ -74,7 +74,7 @@ const StoreAdminOrders = () => {
       const date = Date().split(" ");
       // we use a date string to generate our filename.
       const dateStr =
-        "Agrotec Reports" + date[0] + date[1] + date[2] + date[3] + date[4];
+        "Florage Reports" + date[0] + date[1] + date[2] + date[3] + date[4];
       doc.save(`report_${dateStr}.pdf`);
     });
   };
@@ -107,14 +107,19 @@ const StoreAdminOrders = () => {
             {orders &&
               orders.map((order) => (
                 <tr>
-                  <th scope="row" style={{ width: "300px" }}>
-                    {order._id}
-                  </th>
-                  <td>
-                    {order.firstName} {order.lastName}
-                  </td>
-                  <td>$ {order.total}</td>
-                  <td style={{ width: "300px" }}>{order.createdAt}</td>
+                 <div key={order.id}>
+          <h2>Order {order.id}</h2>
+          <p>User ID: {order.userId}</p>
+          <p>Total Price: {order.totalPrice}</p>
+          <p>Status: {order.status}</p>
+          <ul>
+            {order.products.map(item => (
+              <li key={item.product.id}>
+                {item.product.name} - {item.quantity} x ${item.product.price} = ${item.quantity * item.product.price}
+              </li>
+            ))}
+          </ul>
+        </div>
                 </tr>
               ))}
           </tbody>
