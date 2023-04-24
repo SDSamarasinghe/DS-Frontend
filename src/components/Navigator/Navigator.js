@@ -31,6 +31,11 @@ const Navigator = () => {
                       <span>Home</span>
                     </Link>
                   </li>
+                  <li>
+                    <Link to="/store/store-shopping-cart">
+                      <span>Cart</span>
+                    </Link>
+                  </li>
                   <li className="has-children">
                     <a href="about.html">
                       <span>
@@ -80,7 +85,7 @@ const Navigator = () => {
                       </li>
                       <li className="has-children">
                         <Link to="/">Services</Link>
-                        
+
                         <ul className="dropdown">
                           <li>
                             <Link to="/">
@@ -89,12 +94,12 @@ const Navigator = () => {
                           </li>
                           <li>
                             <Link to="/">
-                              <a>  Admin2</a>
+                              <a> Admin2</a>
                             </Link>
                           </li>
                           <li>
                             <Link to="/">
-                              <a>  Admin3</a>
+                              <a> Admin3</a>
                             </Link>
                           </li>
                           <li>
@@ -109,12 +114,12 @@ const Navigator = () => {
                           </li>
                           <li>
                             <Link to="/">
-                              <a>  Admin6</a>
+                              <a> Admin6</a>
                             </Link>
                           </li>
                           <li>
                             <Link to="/">
-                              <a>  Admin7</a>
+                              <a> Admin7</a>
                             </Link>
                           </li>
                           <li>
