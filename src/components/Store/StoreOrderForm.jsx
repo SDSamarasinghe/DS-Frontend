@@ -107,7 +107,7 @@ const StoreOrderForm = () => {
 //must check endpoint
     e.preventDefault();
     axios
-      .post("http://localhost:8000/api/store/orders", order)
+      .post("http://florage-api.pasinduprabhashitha.com/api/orders/", order)
       .then((res) => {
         swal({
           title:

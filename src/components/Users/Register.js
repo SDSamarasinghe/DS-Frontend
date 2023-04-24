@@ -6,6 +6,7 @@ const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [phone, setPhone] = useState("");
   const [error, setError] = useState(null);
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordsMatch, setPasswordsMatch] = useState(false);
@@ -44,7 +45,7 @@ const Register = () => {
 
     if (re.test(user.email)) {
       const { res, status } = await axios.post(
-        "http://localhost:3000/api/users/sign-up",
+        "http://florage-api.pasinduprabhashitha.com/api/auth/register",
         user
       );
 
@@ -91,6 +92,21 @@ const Register = () => {
                 value={email}
                 onChange={(e) => {
                   setEmail(e.target.value);
+                }}
+              />
+            </div>
+
+            <div className="mb-3">
+              <label for="exampleInputEmail1" className="form-label">
+                Phone Number
+              </label>
+              <input
+                type="number"
+                className="form-control"
+                style={{ width: "600px" }}
+                value={phone}
+                onChange={(e) => {
+                  setPhone(e.target.value);
                 }}
               />
             </div>
