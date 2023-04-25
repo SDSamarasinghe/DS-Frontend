@@ -20,7 +20,7 @@ const Login = () => {
     };
 
     await axios
-      .post("http://localhost:3000/api/users/login", user, {
+      .post("http://florage-api.pasinduprabhashitha.com/api/auth/login", user, {
         withCredentials: true,
       })
       .then((res) => {

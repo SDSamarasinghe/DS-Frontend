@@ -12,7 +12,7 @@ const StoreShoppingCart = () => {
 
   return (
     <div>
-      <section class="h-100 h-custom" style={{ backgroundColor: "#d2c9ff" }}>
+      
         <div class="container py-5 h-100">
           <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-12">
@@ -86,7 +86,7 @@ const StoreShoppingCart = () => {
 
                         <div class="pt-5">
                           <h6 class="mb-0">
-                            <a href="#!" class="text-body">
+                            <a href="/store" class="text-body">
                               <i class="fas fa-long-arrow-alt-left me-2"></i>
                               Back to shop
                             </a>
@@ -155,7 +155,7 @@ const StoreShoppingCart = () => {
             </div>
           </div>
         </div>
-      </section>
+     
     </div>
   );
 };
