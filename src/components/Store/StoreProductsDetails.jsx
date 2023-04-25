@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
+import { cartsub } from "../../services/cart";
 import "./Store.css";
 
 const StoreProductsDetails = () => {
@@ -11,18 +12,32 @@ const StoreProductsDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`http://florage-api.pasinduprabhashitha.com/api/products/${params.id}`)
+      .get(
+        `http://florage-api.pasinduprabhashitha.com/api/products/${params.id}`
+      )
       .then((res) => {
         setProduct(res.data);
       });
   }, [params]);
+
+  const addToCart = () => {
+    let cart = cartsub.value || [];
+    let productInCart = cart.find((x) => x.id === product.id);
+    if (!productInCart) {
+      cart.push({
+        product,
+        quantity,
+      });
+      cartsub.next(cart);
+    }
+  };
 
   return (
     <div className="mx-vw-100 min-vh-100">
       <div className="latest-store-details-cover position-relative">
         <img src="https://i.ibb.co/rkfrhCm/banner18.webp" alt="" />
         <div className="store-products-top text-secondary position-absolute top-50 start-50 translate-middle">
-          <p> Home  Products  {product && product.name} </p>
+          <p> Home Products {product && product.name} </p>
         </div>
       </div>
       <div className="d-flex">
@@ -48,14 +63,14 @@ const StoreProductsDetails = () => {
                     ${product && product.price}
                   </h2>
                   <p className="my-3">{product && product.description}</p>
-                  <div className="quantity-area col-4 my-3" >
+                  <div className="quantity-area col-4 my-3">
                     <label className="form-label">Choose your quantity:</label>
                     <input
-                   
                       type="number"
                       className={`form-control col-2 ${
                         quantity < 0 && "is-invalid"
                       }`}
+                      style={{ width: "100px" }}
                       value={quantity}
                       onChange={(e) => setQuantity(e.target.value)}
                     />
@@ -66,15 +81,11 @@ const StoreProductsDetails = () => {
                   <div className="col-4 my-3">
                     <button
                       disabled={quantity <= 0}
-                      onClick={() => {
-                        navigate(
-                          `/store/order/store-order-create/${product.id}/${quantity}/${product.price}`
-                        );
-                      }}
+                      onClick={addToCart}
                       id="product-details-buy-now"
                       className="btn product-details-buy-now w-100"
                     >
-                      Buy Now
+                      Add To Cart
                     </button>
                   </div>
                 </div>
