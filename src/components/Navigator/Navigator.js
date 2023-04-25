@@ -18,7 +18,7 @@ const Navigator = () => {
         <div style={{ backgroundColor: "#4E5180" }} className="px-3">
           <div className="align-items-center justify-content-between d-flex">
             <div className="">
-              <h1 className="mb-0 site-logo text-white">Save Sea</h1>
+              <h1 className="mb-0 site-logo text-white">Florage</h1>
             </div>
             <div className="d-none d-xl-block  ">
               <nav
