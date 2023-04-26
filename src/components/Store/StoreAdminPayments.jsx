@@ -1,13 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import "./Store.css";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
 const StoreAdminPayments = () => {
   const [payments, setPayments] = useState([]);
-//must check endpoint
+  //must check endpoint
   useEffect(() => {
     axios.get(`http://localhost:8000/api/store/payments`).then((res) => {
       setPayments(res.data.payments);

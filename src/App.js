@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
+import axios from "axios";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-
+import { addUser, userSub } from "./services/user";
 
 import "./App.css";
 
 //basic imports
 import Navigator from "./components/Navigator/Navigator";
 import Footer from "./components/Footer";
-
 
 //User imports
 import Login from "./components/Users/Login";
@@ -26,9 +26,14 @@ import StoreProductsDetails from "./components/Store/StoreProductsDetails";
 import StoreOrderForm from "./components/Store/StoreOrderForm";
 import StoreAddProductForm from "./components/Store/StoreAddProductForm";
 
-
 function App() {
-  useEffect(() => {}, []);
+  useEffect(() => {
+    userSub.asObservable().subscribe((user) => {
+      if (user) {
+        axios.defaults.headers.common["Authorization"] = addUser(user);
+      }
+    });
+  }, []);
 
   return (
     <BrowserRouter>
@@ -36,7 +41,6 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<Register />} />
-      
 
         <Route path="/store" element={<StoreHome />} />
         <Route path="/store/products/:category" element={<StoreProducts />} />
@@ -76,9 +80,6 @@ function App() {
           path="/store/store-shopping-cart"
           element={<StoreShoppingCart />}
         />
-
-
-
       </Routes>
       <Footer />
     </BrowserRouter>

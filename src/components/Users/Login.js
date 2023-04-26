@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { userSub } from "../../services/user";
 
 const Login = () => {
   const [password, setPassword] = useState();
@@ -20,10 +21,9 @@ const Login = () => {
     };
 
     await axios
-      .post("http://florage-api.pasinduprabhashitha.com/api/auth/login", user, {
-        withCredentials: true,
-      })
+      .post("http://florage-api.pasinduprabhashitha.com/api/auth/login", user)
       .then((res) => {
+        userSub.next(res.data.token);
         setWaiting(!waiting);
         navigate("/store/store-admin-products");
         return;

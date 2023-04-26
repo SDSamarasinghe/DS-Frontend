@@ -1,17 +1,18 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import "./Store.css";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
 const StoreAdminOrders = () => {
   const [orders, setOrders] = useState([]);
-//must check endpoint
+  //must check endpoint
   useEffect(() => {
-    axios.get(`http://florage-api.pasinduprabhashitha.com/api/Order`).then((res) => {
-      setOrders(res.data);
-    });
+    axios
+      .get(`http://florage-api.pasinduprabhashitha.com/api/Order`)
+      .then((res) => {
+        setOrders(res.data);
+      });
   }, []);
 
   const printPdf = () => {
@@ -107,19 +108,21 @@ const StoreAdminOrders = () => {
             {orders &&
               orders.map((order) => (
                 <tr>
-                 <div key={order.id}>
-          <h2>Order {order.id}</h2>
-          <p>User ID: {order.userId}</p>
-          <p>Total Price: {order.totalPrice}</p>
-          <p>Status: {order.status}</p>
-          <ul>
-            {order.products.map(item => (
-              <li key={item.product.id}>
-                {item.product.name} - {item.quantity} x ${item.product.price} = ${item.quantity * item.product.price}
-              </li>
-            ))}
-          </ul>
-        </div>
+                  <div key={order.id}>
+                    <h2>Order {order.id}</h2>
+                    <p>User ID: {order.userId}</p>
+                    <p>Total Price: {order.totalPrice}</p>
+                    <p>Status: {order.status}</p>
+                    <ul>
+                      {order.products.map((item) => (
+                        <li key={item.product.id}>
+                          {item.product.name} - {item.quantity} x $
+                          {item.product.price} = $
+                          {item.quantity * item.product.price}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </tr>
               ))}
           </tbody>

@@ -1,8 +1,22 @@
 import React from "react";
 import "./navigator.css";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { userSub } from "../../services/user";
 
 const Navigator = () => {
+  const [user, setUser] = React.useState(false);
+
+  useEffect(() => {
+    userSub.asObservable().subscribe((user) => {
+      if (user) {
+        setUser(true);
+      } else {
+        setUser(false);
+      }
+    });
+  }, []);
+
   return (
     <div>
       <div className="site-mobile-menu">
@@ -132,9 +146,11 @@ const Navigator = () => {
                     </ul>
                   </li>
                   <li>
-                    <Link to="/login">
-                      <span>Login</span>
-                    </Link>
+                    {!user && (
+                      <Link to="/login">
+                        <span>Login</span>
+                      </Link>
+                    )}
                   </li>
                   <li>
                     <a href="about.html">
