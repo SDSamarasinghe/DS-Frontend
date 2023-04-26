@@ -4,6 +4,10 @@ import { Link } from "react-router-dom";
 import StoreProductSingle from "./StoreProductSingle";
 import oil from "./img/essential-oils.jpg"
 import basil from "./img/basil.jpg"
+import cat1 from "./img/herbal-treatment.png"
+import cat2 from "./img/herbal.png"
+import cat3 from "./img/herbal-massage.png"
+import cat4 from "./img/herbal (1).png"
 
 const StoreHome = () => {
   const [products, setProducts] = useState([]);
@@ -118,56 +122,60 @@ const StoreHome = () => {
           <div className="category col-3">
             <Link to="/store/products/vegetables">
               <img
-                src={basil}
+                src={cat1}
                 style={{
                   width: "300px",
-                  height: "500px",
+                  height: "300px",
                   cursor: "pointer",
                 }}
                 alt=""
               />
+                <h3>Digestive aids</h3>
             </Link>
           </div>
 
           <div className="category col-3">
             <Link to="/store/products/fruits">
               <img
-                src="https://i.ibb.co/jJqxM2X/Cat2.jpg"
+                src={cat2}
                 style={{
                   width: "300px",
-                  height: "500px",
+                  height: "300px",
                   cursor: "pointer",
                 }}
                 alt=""
               />
+                <h3>Relaxants and sedatives</h3>
             </Link>
           </div>
 
           <div className="category col-3">
             <Link to="/store/products/fertilizers">
               <img
-                src="https://i.ibb.co/Y8Jj926/Cat3.jpg"
+                src={cat3}
                 style={{
                   width: "300px",
-                  height: "500px",
+                  height: "300px",
                   cursor: "pointer",
                 }}
-                alt=""
+                alt="Relaxants and sedatives"
               />
+              <h3 >Stimulants and tonics</h3>
             </Link>
           </div>
 
           <div className="category col-3">
             <Link to="/store/products/machinery">
               <img
-                src="https://i.ibb.co/VYrLn1z/Cat4.jpg"
+                src={cat4}
                 style={{
                   width: "300px",
-                  height: "500px",
+                  height: "300px",
                   cursor: "pointer",
                 }}
                 alt=""
               />
+                <h3 style={{marginLeft:"100px"}}>Immune system boosters</h3>
             </Link>
           </div>
         </div>
