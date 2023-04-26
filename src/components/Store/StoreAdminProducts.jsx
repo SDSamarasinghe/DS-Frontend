@@ -153,11 +153,9 @@ const StoreAdminOrders = () => {
             </thead>
             <tbody>
               {products &&
-                products.map((prod) => (
-                  <tr>
-                    <th scope="row" style={{ width: "300px" }}>
-                      {prod._id}
-                    </th>
+                products.map((prod, index) => (
+                  <tr key={index}>
+                    <th scope="row">{index + 1}</th>
                     <td>
                       <img
                         src={prod.image}
