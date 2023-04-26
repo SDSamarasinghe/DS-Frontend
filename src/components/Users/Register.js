@@ -3,10 +3,10 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Register = () => {
-  const [name, setName] = useState("");
+  const [userName, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [phone, setPhone] = useState("");
+  const [phoneNumber, setPhone] = useState("");
   const [error, setError] = useState(null);
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordsMatch, setPasswordsMatch] = useState(false);
@@ -27,14 +27,16 @@ const Register = () => {
 
   const onRegister = async () => {
     const user = {
-      full_name: name,
+      userName,
       email,
       password,
+      phoneNumber,
     };
 
     if (
-      user.full_name.length <= 0 ||
+      user.userName.length <= 0 ||
       user.email.length <= 0 ||
+      user.phoneNumber.length <= 0 ||
       user.password.length <= 0
     ) {
       setError("All the fields are required to create an account");
@@ -49,7 +51,7 @@ const Register = () => {
         user
       );
 
-      if (status === 201) {
+      if (status === 200) {
         navigate("/login");
       }
     } else {
@@ -74,7 +76,7 @@ const Register = () => {
                 type="email"
                 className="form-control"
                 style={{ width: "600px" }}
-                value={name}
+                value={userName}
                 onChange={(e) => {
                   setName(e.target.value);
                 }}
@@ -104,7 +106,7 @@ const Register = () => {
                 type="number"
                 className="form-control"
                 style={{ width: "600px" }}
-                value={phone}
+                value={phoneNumber}
                 onChange={(e) => {
                   setPhone(e.target.value);
                 }}
