@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router";
+import { useParams } from "react-router";
 import { cartsub } from "../../services/cart";
 import "./Store.css";
 
@@ -8,7 +8,7 @@ const StoreProductsDetails = () => {
   const [quantity, setQuantity] = useState(0);
   const [product, setProduct] = useState();
   let params = useParams();
-  let navigate = useNavigate();
+  //let navigate = useNavigate();
 
   useEffect(() => {
     axios
