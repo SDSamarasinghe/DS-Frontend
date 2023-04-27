@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import StoreProductSingle from "./StoreProductSingle";
 import oil from "./img/essential-oils.jpg"
-import basil from "./img/basil.jpg"
 import cat1 from "./img/herbal-treatment.png"
 import cat2 from "./img/herbal.png"
 import cat3 from "./img/herbal-massage.png"

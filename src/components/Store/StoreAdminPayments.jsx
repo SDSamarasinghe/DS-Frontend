@@ -16,7 +16,7 @@ const StoreAdminPayments = () => {
   const printPdf = () => {
     const input = document.querySelector(".pdfdiv");
     html2canvas(input).then((canvas) => {
-      var img = new Image();
+     
       const doc = new jsPDF("p", "mm", "a4");
       doc.setTextColor(255, 0, 0);
       doc.setFontSize(28);

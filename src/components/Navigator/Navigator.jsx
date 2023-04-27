@@ -59,42 +59,42 @@ const Navigator = () => {
                     <ul className="dropdown arrow-top">
                       <li>
                         <Link to="/">
-                          <a>1</a>
+                          <a href="">1</a>
                         </Link>
                       </li>
                       <li>
                         <Link to="/">
-                          <a>2</a>
+                          <a href="">2</a>
                         </Link>
                       </li>
                       <li>
                         <Link to="/">
-                          <a>3</a>
+                          <a href="">3</a>
                         </Link>
                       </li>
                       <li>
                         <Link to="/">
-                          <a>4</a>
+                          <a href="">4</a>
                         </Link>
                       </li>
                       <li>
                         <Link to="/">
-                          <a>5</a>
+                          <a href="">5</a>
                         </Link>
                       </li>
                       <li>
                         <Link to="/">
-                          <a>6</a>
+                          <a href="">6</a>
                         </Link>
                       </li>
                       <li>
                         <Link to="/">
-                          <a>7</a>
+                          <a href="">7</a>
                         </Link>
                       </li>
                       <li>
                         <Link to="/">
-                          <a>8</a>
+                          <a href="">8</a>
                         </Link>
                       </li>
                       <li className="has-children">
@@ -103,42 +103,42 @@ const Navigator = () => {
                         <ul className="dropdown">
                           <li>
                             <Link to="/">
-                              <a> Admin1</a>
+                              <a href=""> Admin1</a>
                             </Link>
                           </li>
                           <li>
                             <Link to="/">
-                              <a> Admin2</a>
+                              <a href=""> Admin2</a>
                             </Link>
                           </li>
                           <li>
                             <Link to="/">
-                              <a> Admin3</a>
+                              <a href=""> Admin3</a>
                             </Link>
                           </li>
                           <li>
                             <Link to="/">
-                              <a> Admin4</a>
+                              <a href=""> Admin4</a>
                             </Link>
                           </li>
                           <li>
                             <Link to="/">
-                              <a> Admin5</a>
+                              <a href=""> Admin5</a>
                             </Link>
                           </li>
                           <li>
                             <Link to="/">
-                              <a> Admin6</a>
+                              <a href=""> Admin6</a>
                             </Link>
                           </li>
                           <li>
                             <Link to="/">
-                              <a> Admin7</a>
+                              <a href=""> Admin7</a>
                             </Link>
                           </li>
                           <li>
                             <Link to="/">
-                              <a> Admin8</a>
+                              <a href=""> Admin8</a>
                             </Link>
                           </li>
                         </ul>
