@@ -45,20 +45,7 @@ const StoreAddProductForm = () => {
     }
 
     //must check endpoint
-    axios
-      .post("http://florage-api.pasinduprabhashitha.com/api/inventory/products", product)
-      .then((response) => {
-        swal({
-          title: "Product Added Successfully!",
-          icon: "success",
-          confirmButtonText: "OK",
-          confirmButtonColor: "#12af39",
-          className: "store-swal-button",
-        }).then(() => {
-          navigate(`/store/store-admin-products`);
-        });
-      });
-  };
+    
 
   
 
@@ -204,3 +191,17 @@ const StoreAddProductForm = () => {
 };
 
 export default StoreAddProductForm;
+axios
+      .post("http://florage-api.pasinduprabhashitha.com/api/inventory/products", product)
+      .then((response) => {
+        swal({
+          title: "Product Added Successfully!",
+          icon: "success",
+          confirmButtonText: "OK",
+          confirmButtonColor: "#12af39",
+          className: "store-swal-button",
+        }).then(() => {
+          navigate(`/store/store-admin-products`);
+        });
+      });
+  };
