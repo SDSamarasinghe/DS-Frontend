@@ -10,12 +10,13 @@ import { useRef } from "react";
 const StoreAdminOrders = () => {
   const [products, setProducts] = useState([]);
 //must check endpoint
+  
   useEffect(() => {
     axios.get(`http://florage-api.pasinduprabhashitha.com/api/inventory/products`).then((res) => {
       setProducts(res.data);
     });
   }, []);
-
+  
   const deleteProduct = (id) => {
     swal({
       title: "Are you sure?",
