@@ -3,15 +3,15 @@ import { useNavigate } from "react-router";
 import "./Store.css";
 
 const StoreProductSingle = ({ img, name, price, id }) => {
+  //must check endpoint
+    // const deleteProduct = async () => {
+    //   const { status } = await axios.delete(
+    //     `http://florage-api.pasinduprabhashitha.com/api/Products/${id}`
+    //   );
+  
+    //   alert("Product Deleted Successfully");
+    // };
   const navigate = useNavigate();
-//must check endpoint
-  // const deleteProduct = async () => {
-  //   const { status } = await axios.delete(
-  //     `http://florage-api.pasinduprabhashitha.com/api/Products/${id}`
-  //   );
-
-  //   alert("Product Deleted Successfully");
-  // };
 
   return (
     <div className="product-card">
