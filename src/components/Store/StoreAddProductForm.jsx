@@ -43,7 +43,8 @@ const StoreAddProductForm = () => {
       setErrors(true);
       return;
     }
-//must check endpoint
+
+    //must check endpoint
     axios
       .post("http://florage-api.pasinduprabhashitha.com/api/inventory/products", product)
       .then((response) => {
