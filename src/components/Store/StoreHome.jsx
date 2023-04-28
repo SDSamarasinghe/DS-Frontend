@@ -11,13 +11,15 @@ import bg from "./img/bulk-herbs.jpg"
 
 const StoreHome = () => {
   const [products, setProducts] = useState([]);
-//must check endpoint
+
+  //must check endpoint
   useEffect(() => {
     axios.get(`http://florage-api.pasinduprabhashitha.com/api/products/`).then((res) => {
       setProducts(res.data);
     });
   }, []);
 
+  
   return (
     <div className="vw-100 min-vh-100" style={{ backgroundColor: "#F5F5F5" }}>
       {/* Upper Images */}
