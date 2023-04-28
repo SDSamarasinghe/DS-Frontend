@@ -7,7 +7,8 @@ import StoreProductSingle from "./StoreProductSingle";
 const StoreProducts = () => {
   let params = useParams();
   const [products, setProducts] = useState(undefined);
-//must check endpoint
+
+  //must check endpoint
   useEffect(() => {
     axios
       .get(`http://localhost:8000/api/store/products/${params.category}`)

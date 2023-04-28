@@ -8,6 +8,7 @@ const StoreProductsDetails = () => {
   const [quantity, setQuantity] = useState(0);
   const [product, setProduct] = useState();
   let params = useParams();
+  
   //let navigate = useNavigate();
 
   useEffect(() => {
