@@ -1,4 +1,4 @@
-# Project Name
+# DIstributed Systems Assignment Frontend
 
 This is a React frontend for the Florage microservice application.
 
