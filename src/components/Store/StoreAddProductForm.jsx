@@ -161,7 +161,7 @@ const StoreAddProductForm = () => {
             </div>
 
             <div className="form-group my-4">
-              <label className="my-1">Sell Prices</label>
+              <label className="my-1">Sell Price</label>
               <input
                 type="number"
                 className="form-control"
