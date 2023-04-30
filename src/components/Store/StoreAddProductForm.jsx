@@ -93,7 +93,7 @@ const StoreAddProductForm = () => {
               />
             </div>
             <div id="store-form-group" className="form-group mt-2">
-              <label className="my-1">Description</label>
+              <label className="my-1">Description..</label>
               <input
                 type="text"
                 class={`form-control ${errors.nameError && "is-invalid"}`}
