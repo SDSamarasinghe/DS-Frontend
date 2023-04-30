@@ -103,7 +103,7 @@ const Navigator = () => {
                         <ul className="dropdown">
                           <li>
                             <Link to="/">
-                              <a href=""> Admin</a>
+                              <a href=""> Admin1</a>
                             </Link>
                           </li>
                           <li>
