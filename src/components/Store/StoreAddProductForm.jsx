@@ -120,7 +120,7 @@ const StoreAddProductForm = () => {
             </div>
 
             <div className="form-group my-4">
-              <label className="my-1">Unit Prices</label>
+              <label className="my-1">Unit Price</label>
               <input
                 type="number"
                 className="form-control"
