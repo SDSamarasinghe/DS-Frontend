@@ -94,7 +94,7 @@ const Navigator = () => {
                       </li>
                       <li>
                         <Link to="/">
-                          <a href="">8</a>
+                          <a href="">7</a>
                         </Link>
                       </li>
                       <li className="has-children">
