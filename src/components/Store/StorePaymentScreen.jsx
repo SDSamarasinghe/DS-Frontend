@@ -8,7 +8,8 @@ const StorePaymentScreen = () => {
   const { orderId } = useParams();
   const [order, setOrder] = useState();
   const [product, setProduct] = useState();
-//must check endpoint
+
+  //must check endpoint
   useState(() => {
     axios
       .get(`http://localhost:8000/api/store/order/${orderId}`)

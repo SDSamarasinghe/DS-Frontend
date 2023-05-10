@@ -13,6 +13,7 @@ const StoreAdminProductsEdit = () => {
   const [sellPrice, setsellPrice] = useState("");
   const [category, setCategory] = useState("");
   const navigate = useNavigate();
+  
   //const [errors, setErrors] = useState("");
 
   const { pid } = useParams();

@@ -42,14 +42,16 @@ const StoreOrderForm = () => {
         quantity: quantity,
       };
     });
-//must check endpoint
+
+    //must check endpoint
     axios
       .get(`http://florage-api.pasinduprabhashitha.com/api/products/${paramsProduct}`)
       .then((res) => {
         setProduct(res.data);
       });
   }, [paramsProduct, price, quantity]);
-//must check endpoint
+
+  //must check endpoint
   
   const onFormChange = (e) => {
     const { name, value } = e.target;
