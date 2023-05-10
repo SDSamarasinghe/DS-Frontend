@@ -32,7 +32,7 @@ const StoreAdminProductsEdit = () => {
     };
 
     axios
-      .put(`http://florage-api.pasinduprabhashitha.com/api/inventory/products/${pid}`, product)
+      .put(`${process.env.REACT_APP_API}/inventory/products/${pid}`, product)
       .then((response) => {
         swal({
           title: "Product Updated Successfully!",
@@ -47,7 +47,7 @@ const StoreAdminProductsEdit = () => {
   };
 
   useEffect(() => {
-    axios.get(`http://florage-api.pasinduprabhashitha.com/api/inventory/products/${pid}`).then((res) => {
+    axios.get(`${process.env.REACT_APP_API}/inventory/products/${pid}`).then((res) => {
       setName(res.data.name);
       setdescription(res.data.description);
       setImg(res.data.image);
