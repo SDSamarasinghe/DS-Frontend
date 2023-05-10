@@ -14,7 +14,7 @@ const StoreHome = () => {
 
   //must check endpoint
   useEffect(() => {
-    axios.get(`http://florage-api.pasinduprabhashitha.com/api/products/`).then((res) => {
+    axios.get(`${process.env.REACT_APP_API}/products/`).then((res) => {
       setProducts(res.data);
     });
   }, []);

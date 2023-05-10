@@ -46,7 +46,7 @@ const StoreAddProductForm = () => {
 
     //must check endpoint
     axios
-      .post("http://florage-api.pasinduprabhashitha.com/api/inventory/products", product)
+      .post(`${process.env.REACT_APP_API}/inventory/products`, product)
       .then((response) => {
         swal({
           title: "Product Added Successfully!",

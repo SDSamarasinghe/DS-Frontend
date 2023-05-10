@@ -27,14 +27,14 @@ const StoreAdminOrders = () => {
     }).then((willDelete) => {
       if (willDelete) {
         axios
-          .delete(`http://florage-api.pasinduprabhashitha.com/api/inventory/products/${id}`)
+          .delete(`${process.env.REACT_APP_API}/inventory/products/${id}`)
           .then(() => {
             swal("Product Deleted Successfully!", {
               icon: "success",
             });
 
             axios
-              .get(`http://florage-api.pasinduprabhashitha.com/api/inventory/products`)
+              .get(`${process.env.REACT_APP_API}/inventory/products`)
               .then((res) => {
                 setProducts(res.data);
               });
