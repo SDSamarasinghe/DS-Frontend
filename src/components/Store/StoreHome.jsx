@@ -3,13 +3,14 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Carousel from 'react-bootstrap/Carousel';
 import StoreProductSingle from "./StoreProductSingle";
-import oil from "./img/essential-oils.jpg"
 import bg1 from "./img/11.jpg"
 import bg2 from "./img/22.jpg"
 import bg3 from "./img/33.jpg"
 import ct1 from "./img/111.jpg"
 import ct2 from "./img/222.jpg"
 import ct4 from "./img/444.jpg"
+import ct3 from "./img/sss.jpg"
+
 
 const StoreHome = () => {
   const [products, setProducts] = useState([]);
@@ -97,7 +98,7 @@ const StoreHome = () => {
 
 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
     <div class="hovereffect">
-        <img class="img-responsive" src={ct2} alt=""/>
+        <img class="img-responsive" src={ct3} alt=""/>
         <div class="overlay">
            <h2>Bitter</h2>
            <a class="info" href="#">link here</a>
@@ -119,10 +120,7 @@ const StoreHome = () => {
       {/* <div className="latest-store-cover my-4">
         <img src="https://i.ibb.co/XJSwxr6/Cover1.jpg" alt="" />
       </div> */}
-      <div className="latest-store-cover my-4">
-        <img src={oil} alt="" />
-      </div>
-
+      
       <div className="latest-store-items p-4">
         <h1 className="display-6 px-5">
           <p>
