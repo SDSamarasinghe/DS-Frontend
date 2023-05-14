@@ -51,95 +51,63 @@ const Navigator = () => {
                     </Link>
                   </li>
                   <li className="has-children">
-                    <a href="about.html">
+                    <a href="/about.html">
                       <span>
                         All Services <i class="fa-solid fa-caret-down mx-2"></i>
                       </span>{" "}
                     </a>
                     <ul className="dropdown arrow-top">
                       <li>
-                        <Link to="/">
-                          <a href="">1</a>
-                        </Link>
+                        <Link to="/">1</Link>
                       </li>
                       <li>
-                        <Link to="/">
-                          <a href="">2</a>
-                        </Link>
+                        <Link to="/">2</Link>
                       </li>
                       <li>
-                        <Link to="/">
-                          <a href="">3</a>
-                        </Link>
+                        <Link to="/">3</Link>
                       </li>
                       <li>
-                        <Link to="/">
-                          <a href="">4</a>
-                        </Link>
+                        <Link to="/">4</Link>
                       </li>
                       <li>
-                        <Link to="/">
-                          <a href="">5</a>
-                        </Link>
+                        <Link to="/">5</Link>
                       </li>
                       <li>
-                        <Link to="/">
-                          <a href="">6</a>
-                        </Link>
+                        <Link to="/">6</Link>
                       </li>
                       <li>
-                        <Link to="/">
-                          <a href="">7</a>
-                        </Link>
+                        <Link to="/">7</Link>
                       </li>
                       <li>
-                        <Link to="/">
-                          <a href="">8</a>
-                        </Link>
+                        <Link to="/">8</Link>
                       </li>
                       <li className="has-children">
                         <Link to="/">Services</Link>
 
                         <ul className="dropdown">
                           <li>
-                            <Link to="/">
-                              <a href=""> Admin1</a>
-                            </Link>
+                            <Link to="/">Admin1</Link>
                           </li>
                           <li>
-                            <Link to="/">
-                              <a href=""> Admin2</a>
-                            </Link>
+                            <Link to="/">Admin2</Link>
                           </li>
                           <li>
-                            <Link to="/">
-                              <a href=""> Admin3</a>
-                            </Link>
+                            <Link to="/">Admin3</Link>
                           </li>
                           <li>
-                            <Link to="/">
-                              <a href=""> Admin4</a>
-                            </Link>
+                            <Link to="/">Admin4</Link>
                           </li>
                           <li>
-                            <Link to="/">
-                              <a href=""> Admin5</a>
-                            </Link>
+                            <Link to="/">Admin5</Link>
                           </li>
                           <li>
-                            <Link to="/">
-                              <a href=""> Admin6</a>
-                            </Link>
+                            <Link to="/">Admin6</Link>
                           </li>
                           <li>
-                            <Link to="/">
-                              <a href=""> Admin7</a>
-                            </Link>
+                            <Link to="/">Admin7</Link>
                           </li>
                           <li>
-                            <Link to="/">
-                              <a href=""> Admin8</a>
-                            </Link>
+                            <Link to="/">Admin8</Link>
                           </li>
                         </ul>
                       </li>
@@ -176,7 +144,7 @@ const Navigator = () => {
               style={{ position: "relative", top: "3px" }}
             >
               <a
-                href="#"
+                href="/"
                 className="site-menu-toggle js-menu-toggle text-white"
               >
                 <span className="icon-menu h3"></span>
