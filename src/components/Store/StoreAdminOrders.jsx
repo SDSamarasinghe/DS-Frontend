@@ -10,7 +10,7 @@ const StoreAdminOrders = () => {
   //must check endpoint
   useEffect(() => {
     axios
-      .get(`http://florage-api.pasinduprabhashitha.com/api/Order`)
+      .get(`${process.env.REACT_APP_API}/orders`)
       .then((res) => {
         setOrders(res.data);
       });
@@ -89,7 +89,7 @@ const StoreAdminOrders = () => {
         <p> These are the orders recived inside this month </p>
 
         <div className="d-flex">
-          <button className="btn btn-success" onClick={printPdf}>
+          <button className="btn btn-success" onClick={printPdf} style={{backgroundColor:"#1c305c"}}>
             <i class="fa-solid fa-file-pdf mx-2"></i> Download Orders As PDF
           </button>
         </div>

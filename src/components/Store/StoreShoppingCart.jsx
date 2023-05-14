@@ -30,7 +30,7 @@ const StoreShoppingCart = () => {
     };
 
     await axios
-      .post("http://florage-api.pasinduprabhashitha.com/api/orders", order)
+      .post(`${process.env.REACT_APP_API}/orders`, order)
       .then((res) => {
         sendToCheck(res);
       })

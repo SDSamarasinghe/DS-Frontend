@@ -13,7 +13,7 @@ const StoreAdminOrders = () => {
 
   useEffect(() => {
     axios
-      .get(`http://florage-api.pasinduprabhashitha.com/api/inventory/products`)
+      .get(`${process.env.REACT_APP_API}/inventory/products`)
       .then((res) => {
         setProducts(res.data);
       });
