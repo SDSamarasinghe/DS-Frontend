@@ -25,7 +25,7 @@ const Login = () => {
       .then((res) => {
         userSub.next(res.data.token);
         setWaiting(!waiting);
-        navigate("/store");
+        navigate("/");
         return;
       })
       .catch((error) => {
