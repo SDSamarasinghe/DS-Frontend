@@ -9,14 +9,16 @@ import { useRef } from "react";
 
 const StoreAdminOrders = () => {
   const [products, setProducts] = useState([]);
-//must check endpoint
-  
+  //must check endpoint
+
   useEffect(() => {
-    axios.get(`http://florage-api.pasinduprabhashitha.com/api/inventory/products`).then((res) => {
-      setProducts(res.data);
-    });
+    axios
+      .get(`http://florage-api.pasinduprabhashitha.com/api/inventory/products`)
+      .then((res) => {
+        setProducts(res.data);
+      });
   }, []);
-  
+
   const deleteProduct = (id) => {
     swal({
       title: "Are you sure?",
@@ -48,7 +50,7 @@ const StoreAdminOrders = () => {
   const printPdf = () => {
     const input = document.querySelector(".pdfdiv");
     html2canvas(input).then((canvas) => {
-      var img = new Image();
+      // var img = new Image();
       const doc = new jsPDF("p", "mm", "a4");
       doc.setTextColor(20, 30, 39);
       doc.setFontSize(28);
@@ -58,6 +60,7 @@ const StoreAdminOrders = () => {
       doc.setFontSize(12);
       doc.text(5, 30, "Generated Time :");
       //Date
+      // eslint-disable-next-line no-array-constructor
       var m_names = new Array(
         "January",
         "February",
@@ -159,6 +162,7 @@ const StoreAdminOrders = () => {
                     <th scope="row">{index + 1}</th>
                     <td>
                       <img
+                        alt="product"
                         src={prod.image}
                         style={{
                           width: "40px",

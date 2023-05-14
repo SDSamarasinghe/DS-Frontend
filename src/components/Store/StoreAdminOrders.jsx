@@ -6,7 +6,7 @@ import jsPDF from "jspdf";
 
 const StoreAdminOrders = () => {
   const [orders, setOrders] = useState([]);
-  
+
   //must check endpoint
   useEffect(() => {
     axios
@@ -19,7 +19,7 @@ const StoreAdminOrders = () => {
   const printPdf = () => {
     const input = document.querySelector(".pdfdiv");
     html2canvas(input).then((canvas) => {
-      var img = new Image();
+      // var img = new Image();
       const doc = new jsPDF("p", "mm", "a4");
       doc.setTextColor(255, 0, 0);
       doc.setFontSize(28);
@@ -30,6 +30,7 @@ const StoreAdminOrders = () => {
       doc.setFontSize(12);
       doc.text(145, 85, "Signature :");
       //Date
+      // eslint-disable-next-line no-array-constructor
       var m_names = new Array(
         "January",
         "February",
