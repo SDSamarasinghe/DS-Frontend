@@ -1,11 +1,15 @@
 import React from "react";
 import "./navigator.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { userSub } from "../../services/user";
+import { adminSub, userSub } from "../../services/user";
+
+import { deleteFromStorage } from "@rehooks/local-storage";
 
 const Navigator = () => {
   const [user, setUser] = React.useState(false);
+  const [admin, setAdmin] = React.useState(false); // [1
+  const navigate = useNavigate();
 
   useEffect(() => {
     userSub.asObservable().subscribe((user) => {
@@ -13,6 +17,14 @@ const Navigator = () => {
         setUser(true);
       } else {
         setUser(false);
+      }
+    });
+
+    adminSub.asObservable().subscribe((admin) => {
+      if (admin) {
+        setAdmin(true);
+      } else {
+        setAdmin(false);
       }
     });
   }, []);
@@ -50,74 +62,51 @@ const Navigator = () => {
                       <span>Cart</span>
                     </Link>
                   </li>
-                  <li className="has-children">
-                    <a href="/about.html">
-                      <span>
-                        All Services <i class="fa-solid fa-caret-down mx-2"></i>
-                      </span>{" "}
-                    </a>
-                    <ul className="dropdown arrow-top">
-                      <li>
-                        <Link to="/">1</Link>
-                      </li>
-                      <li>
-                        <Link to="/">2</Link>
-                      </li>
-                      <li>
-                        <Link to="/">3</Link>
-                      </li>
-                      <li>
-                        <Link to="/">4</Link>
-                      </li>
-                      <li>
-                        <Link to="/">5</Link>
-                      </li>
-                      <li>
-                        <Link to="/">6</Link>
-                      </li>
-                      <li>
-                        <Link to="/">7</Link>
-                      </li>
-                      <li>
-                        <Link to="/">8</Link>
-                      </li>
-                      <li className="has-children">
-                        <Link to="/">Services</Link>
-
-                        <ul className="dropdown">
-                          <li>
-                            <Link to="/">Admin1</Link>
-                          </li>
-                          <li>
-                            <Link to="/">Admin2</Link>
-                          </li>
-                          <li>
-                            <Link to="/">Admin3</Link>
-                          </li>
-                          <li>
-                            <Link to="/">Admin4</Link>
-                          </li>
-                          <li>
-                            <Link to="/">Admin5</Link>
-                          </li>
-                          <li>
-                            <Link to="/">Admin6</Link>
-                          </li>
-                          <li>
-                            <Link to="/">Admin7</Link>
-                          </li>
-                          <li>
-                            <Link to="/">Admin8</Link>
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </li>
+                  {admin && (
+                    <li className="has-children">
+                      <a href="/about.html">
+                        <span>
+                          Admin <i class="fa-solid fa-caret-down mx-2"></i>
+                        </span>{" "}
+                      </a>
+                      <ul className="dropdown arrow-top">
+                        <li>
+                          <Link to="/store/store-admin-products">Products</Link>
+                        </li>
+                        <li>
+                          <Link to="/">Orders</Link>
+                        </li>
+                        <li>
+                          <Link to="/">Payments</Link>
+                        </li>
+                        <li>
+                          <Link to="/">Order Commisions</Link>
+                        </li>
+                      </ul>
+                    </li>
+                  )}
                   <li>
                     {!user && (
                       <Link to="/login">
                         <span>Login</span>
                       </Link>
+                    )}
+                  </li>
+                  <li>
+                    {user && (
+                      <span
+                        style={{ cursor: "pointer" }}
+                        className="text-white"
+                        onClick={() => {
+                          deleteFromStorage("florage-user");
+                          userSub.next(null);
+                          adminSub.next(false);
+                          deleteFromStorage("florage-admin");
+                          navigate("/");
+                        }}
+                      >
+                        Logout
+                      </span>
                     )}
                   </li>
                   <li>

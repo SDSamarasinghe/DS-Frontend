@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { addUser, userSub } from "./services/user";
+import { addUser, adminSub, userSub } from "./services/user";
 
 import "./App.css";
 
@@ -25,14 +25,24 @@ import StoreProducts from "./components/Store/StoreProducts";
 import StoreProductsDetails from "./components/Store/StoreProductsDetails";
 import StoreOrderForm from "./components/Store/StoreOrderForm";
 import StoreAddProductForm from "./components/Store/StoreAddProductForm";
+import { useLocalStorage } from "@rehooks/local-storage";
+import { cartsub } from "./services/cart";
 
 function App() {
+  const [user] = useLocalStorage("florage-user");
+  const [cart] = useLocalStorage("cart");
+  const [admin] = useLocalStorage("florage-admin");
+
   useEffect(() => {
+    userSub.next(user);
+    cartsub.next(cart);
+    adminSub.next(admin);
     userSub.asObservable().subscribe((user) => {
       if (user) {
         axios.defaults.headers.common["Authorization"] = addUser(user);
       }
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
