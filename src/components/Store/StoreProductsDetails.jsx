@@ -16,7 +16,7 @@ const StoreProductsDetails = () => {
   useEffect(() => {
     axios
       .get(
-        `http://florage-api.pasinduprabhashitha.com/api/products/${params.id}`
+        `${process.env.REACT_APP_API}/products/${params.id}`
       )
       .then((res) => {
         setProduct(res.data);

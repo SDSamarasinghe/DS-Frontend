@@ -45,7 +45,7 @@ const StoreOrderForm = () => {
     //must check endpoint
     axios
       .get(
-        `http://florage-api.pasinduprabhashitha.com/api/products/${paramsProduct}`
+        `${process.env.REACT_APP_API}/products/${paramsProduct}`
       )
       .then((res) => {
         setProduct(res.data);
@@ -110,7 +110,7 @@ const StoreOrderForm = () => {
     //must check endpoint
     e.preventDefault();
     axios
-      .post("http://florage-api.pasinduprabhashitha.com/api/orders/", order)
+      .post(`${process.env.REACT_APP_API}/orders/`, order)
       .then((res) => {
         swal({
           title:
