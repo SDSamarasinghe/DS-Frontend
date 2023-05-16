@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { cartsub } from "../../services/cart";
 import { loadStripe } from "@stripe/stripe-js";
 import stripe from "stripe";
-
+import { writeStorage } from "@rehooks/local-storage";
 const pubkey =
   "pk_test_51N0pauHJfferNMktTgB3tTiM2ZIJGzxoNZ5JH0J2DmU1WFf70Ywb3WLXtR9Fe1axXSFxzmkECoazUJsA4t8ng4gb00APeKTdwc";
 const promise = loadStripe(pubkey);
@@ -146,9 +146,21 @@ const StoreShoppingCart = () => {
                               <h6 class="mb-0">€ {item.product.price}</h6>
                             </div>
                             <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                              <a href="#!" class="text-muted">
-                                <i class="fas fa-times">x</i>
-                              </a>
+                              <i
+                                style={{
+                                  cursor: "pointer",
+                                }}
+                                class="fas fa-times"
+                                onClick={() => {
+                                  const cartN = cart.filter(
+                                    (x) => x.id !== item.id
+                                  );
+                                  cartsub.next(cartN);
+                                  writeStorage("cart", cartN);
+                                }}
+                              >
+                                x
+                              </i>
                             </div>
                           </div>
 

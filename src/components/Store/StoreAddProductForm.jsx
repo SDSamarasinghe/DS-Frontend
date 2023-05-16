@@ -10,7 +10,6 @@ const StoreAddProductForm = () => {
   const [price, setPrice] = useState("");
   const [stockCount, setStockCount] = useState("");
   const [buyPrice, setbuyPrice] = useState("");
-  const [sellPrice, setsellPrice] = useState("");
   const [category, setCategory] = useState("");
   const navigate = useNavigate();
   const [errors, setErrors] = useState("");
@@ -24,9 +23,7 @@ const StoreAddProductForm = () => {
       price,
       stockCount,
       buyPrice,
-      sellPrice,
       category,
-    
     };
 
     if (
@@ -35,10 +32,8 @@ const StoreAddProductForm = () => {
       product.image.length <= 0 ||
       product.price.length <= 0 ||
       product.stockCount.length <= 0 ||
-      product.sellPrice.length <= 0 ||
       product.stockCount.length <= 0 ||
       product.category.length <= 0
-   
     ) {
       setErrors(true);
       return;
@@ -59,8 +54,6 @@ const StoreAddProductForm = () => {
         });
       });
   };
-
-  
 
   return (
     <div className="store-add-product py-4 d-flex align-items-center flex-column justify-content-center">
@@ -106,7 +99,7 @@ const StoreAddProductForm = () => {
               />
             </div>
 
-             <div className="form-group my-4">
+            <div className="form-group my-4">
               <label className="my-1">Image</label>
               <input
                 type="text"
@@ -131,8 +124,6 @@ const StoreAddProductForm = () => {
                 }}
               />
             </div>
-
-           
 
             <div className="form-group my-4">
               <label className="my-1">Stock Quantity</label>
@@ -160,19 +151,6 @@ const StoreAddProductForm = () => {
               />
             </div>
 
-            <div className="form-group my-4">
-              <label className="my-1">Sell Price</label>
-              <input
-                type="number"
-                className="form-control"
-                placeholder="Unit Price"
-                value={sellPrice}
-                onChange={(e) => {
-                  setsellPrice(e.target.value);
-                }}
-              />
-            </div>
-
             <div className="form-group mt-4">
               <label className="my-1">Category</label>
               <input
@@ -186,8 +164,6 @@ const StoreAddProductForm = () => {
               />
             </div>
 
-
-            
             <button
               type="submit"
               id="product-details-buy-now"

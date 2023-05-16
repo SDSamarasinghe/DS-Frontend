@@ -125,7 +125,12 @@ const StoreAdminOrders = () => {
 
   return (
     <>
-      <div className="store-container d-flex justify-content-center p-5">
+      <div
+        style={{
+          minHeight: "100vh",
+        }}
+        className="h-100 store-container d-flex justify-content-center p-5"
+      >
         <div className=" w-100" id="store-admin-admin456412123">
           <h3 onClick={printPdf}> Store Products Admin </h3>
           <p> These are the products exists inside the store </p>
