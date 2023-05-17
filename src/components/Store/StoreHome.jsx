@@ -2,9 +2,9 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import StoreProductSingle from "./StoreProductSingle";
-import bg1 from "./img/11.jpg";
-import bg2 from "./img/22.jpg";
-import bg3 from "./img/33.jpg";
+import bg1 from "./img/1111.jpg";
+import bg2 from "./img/2222.jpg";
+import bg3 from "./img/3333.jpg";
 import ct1 from "./img/111.jpg";
 import ct2 from "./img/222.jpg";
 import ct4 from "./img/444.jpg";
@@ -26,14 +26,14 @@ const StoreHome = () => {
 
       <Carousel>
         <Carousel.Item>
-          <img className="d-block w-100" src={bg1} alt="First slide" />
+          <img className="d-block w-100" src={bg1} alt="First slide" style={{height:"500px"}}/>
           <Carousel.Caption>
             <h3>Herbal Supplements</h3>
             <p>Relating to or denoting organic compounds containing a planar unsaturated ring of atoms</p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-          <img className="d-block w-100" src={bg2} alt="Second slide" />
+          <img className="d-block w-100" src={bg2} alt="Second slide" style={{height:"500px"}} />
 
           <Carousel.Caption>
             <h3>Herbal Skincare</h3>
@@ -41,7 +41,7 @@ const StoreHome = () => {
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-          <img className="d-block w-100" src={bg3} alt="Third slide" />
+          <img className="d-block w-100" src={bg3} alt="Third slide" style={{height:"500px"}} />
 
           <Carousel.Caption>
             <h3>Herbal Hair Care</h3>
