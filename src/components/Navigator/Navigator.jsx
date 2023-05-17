@@ -74,13 +74,13 @@ const Navigator = () => {
                           <Link to="/store/store-admin-products">Products</Link>
                         </li>
                         <li>
-                          <Link to="/">Orders</Link>
+                          <Link to="/store/store-admin-orders">Orders</Link>
                         </li>
                         <li>
                           <Link to="/">Payments</Link>
                         </li>
                         <li>
-                          <Link to="/">Order Commisions</Link>
+                          <Link to="/api/orders/commisions">Order Commisions</Link>
                         </li>
                       </ul>
                     </li>
