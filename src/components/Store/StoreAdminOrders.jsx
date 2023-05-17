@@ -47,9 +47,9 @@ const StoreAdminOrders = () => {
           <tbody>
             {orders &&
               orders.map((order) => (
-                <tr>
-                  <div key={order.id}>
-                    <td><h2>Order {order.id}</h2></td>
+                <tr key={order.id}>
+                  {/* <div key={order.id}> */}
+                    <td><h5>Order {order.id}</h5></td>
                     <td><p>User ID: {order.userId}</p></td>
                     <td><p>Total Price: {order.totalPrice}</p></td>
                     <td><p>Status: {order.status}</p></td>
@@ -63,7 +63,7 @@ const StoreAdminOrders = () => {
                       ))}
                     </ul>
                     </td>
-                  </div>
+                  {/* </div> */}
                 </tr>
               ))}
           </tbody>
