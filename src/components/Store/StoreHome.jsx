@@ -28,15 +28,15 @@ const StoreHome = () => {
         <Carousel.Item>
           <img className="d-block w-100" src={bg1} alt="First slide" />
           <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            <h3>Aromatic</h3>
+            <p>Relating to or denoting organic compounds containing a planar unsaturated ring of atoms</p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
           <img className="d-block w-100" src={bg2} alt="Second slide" />
 
           <Carousel.Caption>
-            <h3>Second slide label</h3>
+            <h3>Astringents</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           </Carousel.Caption>
         </Carousel.Item>
@@ -44,9 +44,9 @@ const StoreHome = () => {
           <img className="d-block w-100" src={bg3} alt="Third slide" />
 
           <Carousel.Caption>
-            <h3>Third slide label</h3>
+            <h3>Bitter</h3>
             <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+            producing one of the four basic taste sensations; not sour, sweet, or salt.
             </p>
           </Carousel.Caption>
         </Carousel.Item>
@@ -67,7 +67,7 @@ const StoreHome = () => {
               <div class="overlay">
                 <h2>Aromatic</h2>
                 <a class="info" href="A link to carousal image">
-                  link here
+                  Click here
                 </a>
               </div>
             </div>
@@ -79,7 +79,7 @@ const StoreHome = () => {
               <div class="overlay">
                 <h2>Astringents</h2>
                 <a class="info" href="A link to carousal image">
-                  link here
+                Click here
                 </a>
               </div>
             </div>
@@ -91,7 +91,7 @@ const StoreHome = () => {
               <div class="overlay">
                 <h2>Bitter</h2>
                 <a class="info" href="A link to carousal image">
-                  link here
+                Click here
                 </a>
               </div>
             </div>
@@ -102,7 +102,7 @@ const StoreHome = () => {
               <div class="overlay">
                 <h2>Mucilagnious</h2>
                 <a class="info" href="A link to carousal image">
-                  link here
+                Click here
                 </a>
               </div>
             </div>
