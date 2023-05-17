@@ -3,7 +3,7 @@ import "./navigator.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { adminSub, userSub } from "../../services/user";
-
+import logpic from "../Store/img/box-arrow-left.svg"
 import { deleteFromStorage } from "@rehooks/local-storage";
 
 const Navigator = () => {
@@ -93,6 +93,7 @@ const Navigator = () => {
                     )}
                   </li>
                   <li>
+                    <img src={logpic} alt="" style={{marginRight:"10px"}}/>
                     {user && (
                       <span
                         style={{ cursor: "pointer" }}
