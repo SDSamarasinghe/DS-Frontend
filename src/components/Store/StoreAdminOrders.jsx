@@ -41,6 +41,7 @@ const StoreAdminOrders = () => {
               <th scope="col">Customer Name</th>
               <th scope="col">Amount</th>
               <th scope="col">Date</th>
+              <th scope="col">Date</th>
             </tr>
           </thead>
           <tbody>
@@ -48,11 +49,11 @@ const StoreAdminOrders = () => {
               orders.map((order) => (
                 <tr>
                   <div key={order.id}>
-                    <h2>Order {order.id}</h2>
-                    <p>User ID: {order.userId}</p>
-                    <p>Total Price: {order.totalPrice}</p>
-                    <p>Status: {order.status}</p>
-                    <ul>
+                    <td><h2>Order {order.id}</h2></td>
+                    <td><p>User ID: {order.userId}</p></td>
+                    <td><p>Total Price: {order.totalPrice}</p></td>
+                    <td><p>Status: {order.status}</p></td>
+                    <td><ul>
                       {order.products.map((item) => (
                         <li key={item.product.id}>
                           {item.product.name} - {item.quantity} x $
@@ -61,6 +62,7 @@ const StoreAdminOrders = () => {
                         </li>
                       ))}
                     </ul>
+                    </td>
                   </div>
                 </tr>
               ))}

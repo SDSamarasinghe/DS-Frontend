@@ -12,6 +12,7 @@ import Footer from "./components/Footer";
 //User imports
 import Login from "./components/Users/Login";
 import Register from "./components/Users/Register";
+import Profile from "./components/Users/Profile";
 
 //store imports
 import StorePaymentScreen from "./components/Store/StorePaymentScreen";
@@ -51,6 +52,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<Register />} />
+        <Route path="/profile" element={<Profile />} />
 
         <Route path="/" element={<StoreHome />} />
         <Route path="/store/products/:category" element={<StoreProducts />} />
