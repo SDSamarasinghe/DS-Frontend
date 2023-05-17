@@ -14,6 +14,8 @@ import Login from "./components/Users/Login";
 import Register from "./components/Users/Register";
 import Profile from "./components/Users/Profile";
 
+
+
 //store imports
 import StorePaymentScreen from "./components/Store/StorePaymentScreen";
 import StoreAdminProductsEdit from "./components/Store/StoreAdminProductsEdit";
@@ -22,6 +24,7 @@ import StoreShoppingCart from "./components/Store/StoreShoppingCart";
 import StoreAdminOrders from "./components/Store/StoreAdminOrders";
 import StoreAdminPayments from "./components/Store/StoreAdminPayments";
 import StoreHome from "./components/Store/StoreHome";
+import StoreAdminCommisions from "./components/Store/StoreAdminCommision";
 import StoreProducts from "./components/Store/StoreProducts";
 import StoreProductsDetails from "./components/Store/StoreProductsDetails";
 import StoreOrderForm from "./components/Store/StoreOrderForm";
@@ -91,6 +94,11 @@ function App() {
         <Route
           path="/store/store-shopping-cart"
           element={<StoreShoppingCart />}
+        />
+
+        <Route
+          path="/store/commisions"
+          element={<StoreAdminCommisions />}
         />
       </Routes>
       <Footer />
