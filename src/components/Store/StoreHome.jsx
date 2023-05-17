@@ -28,7 +28,7 @@ const StoreHome = () => {
         <Carousel.Item>
           <img className="d-block w-100" src={bg1} alt="First slide" />
           <Carousel.Caption>
-            <h3>Aromatic</h3>
+            <h3>Herbal Supplements</h3>
             <p>Relating to or denoting organic compounds containing a planar unsaturated ring of atoms</p>
           </Carousel.Caption>
         </Carousel.Item>
@@ -36,7 +36,7 @@ const StoreHome = () => {
           <img className="d-block w-100" src={bg2} alt="Second slide" />
 
           <Carousel.Caption>
-            <h3>Astringents</h3>
+            <h3>Herbal Skincare</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           </Carousel.Caption>
         </Carousel.Item>
@@ -44,7 +44,7 @@ const StoreHome = () => {
           <img className="d-block w-100" src={bg3} alt="Third slide" />
 
           <Carousel.Caption>
-            <h3>Bitter</h3>
+            <h3>Herbal Hair Care</h3>
             <p>
             producing one of the four basic taste sensations; not sour, sweet, or salt.
             </p>
@@ -65,7 +65,7 @@ const StoreHome = () => {
             <div class="hovereffect">
               <img class="img-responsive" src={ct1} alt="" />
               <div class="overlay">
-                <h2>Aromatic</h2>
+                <h2>Herbal Supplements</h2>
                 <a class="info" href="A link to carousal image">
                   Click here
                 </a>
@@ -77,7 +77,7 @@ const StoreHome = () => {
             <div class="hovereffect">
               <img class="img-responsive" src={ct2} alt="" />
               <div class="overlay">
-                <h2>Astringents</h2>
+                <h2>Herbal Skincare</h2>
                 <a class="info" href="A link to carousal image">
                 Click here
                 </a>
@@ -89,7 +89,7 @@ const StoreHome = () => {
             <div class="hovereffect">
               <img class="img-responsive" src={ct3} alt="" />
               <div class="overlay">
-                <h2>Bitter</h2>
+                <h2>Herbal Hair Care</h2>
                 <a class="info" href="A link to carousal image">
                 Click here
                 </a>
@@ -100,7 +100,7 @@ const StoreHome = () => {
             <div class="hovereffect">
               <img class="img-responsive" src={ct4} alt="" />
               <div class="overlay">
-                <h2>Mucilagnious</h2>
+                <h2>Herbal Beauty and Personal Care</h2>
                 <a class="info" href="A link to carousal image">
                 Click here
                 </a>
@@ -129,6 +129,7 @@ const StoreHome = () => {
                   img={prod.image}
                   title={prod.name}
                   price={prod.price}
+                  cat={prod.category}
                   id={prod.id}
                 />
               </div>

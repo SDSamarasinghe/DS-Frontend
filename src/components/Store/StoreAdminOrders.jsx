@@ -25,7 +25,7 @@ const StoreAdminOrders = () => {
         <button
             onClick={() => exportToCSV(orders, "Orders")}
             type="button"
-            class="h-10 focus:outline-none text-white bg-blue-900 hover:bg-orange-600  font-medium rounded text-sm px-5 py-2.5"
+            class="btn btn-primary"
           >
             Download Report
           </button>

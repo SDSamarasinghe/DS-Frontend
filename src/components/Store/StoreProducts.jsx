@@ -67,6 +67,7 @@ const StoreProducts = () => {
                 key={prod._id}
                 img={prod.image}
                 title={prod.name}
+                cat={prod.category}
                 price={prod.price}
                 id={prod._id}
               />
