@@ -38,10 +38,10 @@ const StoreAdminOrders = () => {
           <thead className="store-admin-table-header">
             <tr>
               <th scope="col">Order ID</th>
-              <th scope="col">Customer Name</th>
+              <th scope="col">Customer ID</th>
               <th scope="col">Amount</th>
-              <th scope="col">Date</th>
-              <th scope="col">Date</th>
+              <th scope="col">Status</th>
+              <th scope="col">Total Price</th>
             </tr>
           </thead>
           <tbody>
