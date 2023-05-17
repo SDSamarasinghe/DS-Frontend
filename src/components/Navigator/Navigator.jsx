@@ -93,7 +93,7 @@ const Navigator = () => {
                     )}
                   </li>
                   <li>
-                    <img src={logpic} alt="" style={{marginRight:"10px"}}/>
+                   
                     {user && (
                       <span
                         style={{ cursor: "pointer" }}
@@ -106,6 +106,7 @@ const Navigator = () => {
                           navigate("/");
                         }}
                       >
+                         <img src={logpic} alt="" style={{marginRight:"10px"}}/>
                         Logout
                       </span>
                     )}

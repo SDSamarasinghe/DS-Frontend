@@ -4,6 +4,16 @@ import React, { useEffect, useState } from "react";
 
 
 const Profile = () => {
+
+    const [user, setUser] = useState([]);
+
+    useEffect(() => {
+        axios
+          .get(`${process.env.REACT_APP_API}/orders/current-user`)
+          .then((res) => {
+            setUser(res.data);
+          });
+      }, []);
   
 
   return (

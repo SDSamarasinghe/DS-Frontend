@@ -43,7 +43,7 @@ const Register = () => {
 
     if (re.test(user.email)) {
       const { status } = await axios.post(
-        "http://florage-api.pasinduprabhashitha.com/api/auth/register",
+        `${process.env.REACT_APP_API}/auth/register`,
         user
       );
 

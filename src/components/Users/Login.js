@@ -23,7 +23,7 @@ const Login = () => {
     };
 
     await axios
-      .post("http://florage-api.pasinduprabhashitha.com/api/auth/login", user)
+      .post(`${process.env.REACT_APP_API}/auth/login`, user)
       .then((res) => {
         userSub.next(res.data.token);
         writeStorage("florage-user", res.data.token);
