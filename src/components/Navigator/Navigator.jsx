@@ -80,7 +80,7 @@ const Navigator = () => {
                           <Link to="/">Payments</Link>
                         </li>
                         <li>
-                          <Link to="/api/orders/commisions">Order Commisions</Link>
+                          <Link to="/store/commisions">Order Commisions</Link>
                         </li>
                       </ul>
                     </li>
