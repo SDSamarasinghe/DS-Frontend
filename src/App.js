@@ -14,8 +14,6 @@ import Login from "./components/Users/Login";
 import Register from "./components/Users/Register";
 import Profile from "./components/Users/Profile";
 
-
-
 //store imports
 import StorePaymentScreen from "./components/Store/StorePaymentScreen";
 import StoreAdminProductsEdit from "./components/Store/StoreAdminProductsEdit";
@@ -56,6 +54,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<Register />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/profile/:status" element={<Profile />} />
 
         <Route path="/" element={<StoreHome />} />
         <Route path="/store/products/:category" element={<StoreProducts />} />
@@ -96,10 +95,7 @@ function App() {
           element={<StoreShoppingCart />}
         />
 
-        <Route
-          path="/store/commisions"
-          element={<StoreAdminCommisions />}
-        />
+        <Route path="/store/commisions" element={<StoreAdminCommisions />} />
       </Routes>
       <Footer />
     </BrowserRouter>
