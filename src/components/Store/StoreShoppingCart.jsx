@@ -3,16 +3,8 @@ import axios from "axios";
 import "./StoreCart.css";
 import { useEffect } from "react";
 import { cartsub } from "../../services/cart";
-import { loadStripe } from "@stripe/stripe-js";
-import stripe from "stripe";
-import { writeStorage } from "@rehooks/local-storage";
-const pubkey =
-  "pk_test_51N0pauHJfferNMktTgB3tTiM2ZIJGzxoNZ5JH0J2DmU1WFf70Ywb3WLXtR9Fe1axXSFxzmkECoazUJsA4t8ng4gb00APeKTdwc";
-const promise = loadStripe(pubkey);
 
-const secKey = stripe(
-  "sk_test_51N0pauHJfferNMktadU200vTPM41Q7xccJJH57fgdNGLt5UmSEdhSJLl1LuIPMUWtkxXOaKtv1VNWV0liWG2prP100kzTHyPUw"
-);
+import { writeStorage } from "@rehooks/local-storage";
 
 const StoreShoppingCart = () => {
   const [cart, setCart] = useState([]);
@@ -32,7 +24,7 @@ const StoreShoppingCart = () => {
     await axios
       .post(`${process.env.REACT_APP_API}/orders`, order)
       .then((res) => {
-        sendToCheck(res);
+        alert("Order placed");
       })
       .catch((error) => {
         console.log(error);
@@ -40,47 +32,6 @@ const StoreShoppingCart = () => {
 
         return;
       });
-  };
-
-  const sendToCheck = async (res) => {
-    const items =
-      cart?.map((item) => {
-        return {
-          price_data: {
-            currency: "usd",
-            product_data: {
-              images: [item.product.image],
-              name: item.product.name,
-            },
-            unit_amount: item.product.price * 100,
-          },
-          quantity: item.quantity,
-        };
-      }) || [];
-
-    const stripe = await promise;
-
-    const redirectURL =
-      process.env.NODE_ENV === "development"
-        ? "http://localhost:3000"
-        : process.env.FRONTEND_DOMAIN;
-
-    console.log("res", res);
-
-    const sess = await secKey.checkout.sessions.create({
-      payment_method_types: ["card"],
-      line_items: items,
-      mode: "payment",
-      success_url: redirectURL,
-      cancel_url: redirectURL,
-      metadata: {
-        orderId: res.data.id,
-      },
-    });
-
-    await stripe?.redirectToCheckout({
-      sessionId: sess.id,
-    });
   };
 
   return (

@@ -3,7 +3,6 @@ import "./navigator.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { adminSub, userSub } from "../../services/user";
-import logpic from "../Store/img/box-arrow-left.svg"
 import { deleteFromStorage } from "@rehooks/local-storage";
 
 const Navigator = () => {
@@ -93,22 +92,26 @@ const Navigator = () => {
                     )}
                   </li>
                   <li>
-                   
                     {user && (
-                      <span
-                        style={{ cursor: "pointer" }}
-                        className="text-white"
-                        onClick={() => {
-                          deleteFromStorage("florage-user");
-                          userSub.next(null);
-                          adminSub.next(false);
-                          deleteFromStorage("florage-admin");
-                          navigate("/");
-                        }}
-                      >
-                         <img src={logpic} alt="" style={{marginRight:"10px"}}/>
-                        Logout
-                      </span>
+                      <>
+                        <span
+                          style={{ cursor: "pointer" }}
+                          className="text-white"
+                          onClick={() => {
+                            deleteFromStorage("florage-user");
+                            userSub.next(null);
+                            adminSub.next(false);
+                            deleteFromStorage("florage-admin");
+                            navigate("/");
+                          }}
+                        >
+                          Logout
+                        </span>
+
+                        <Link to="/profile">
+                          <span>Profile</span>
+                        </Link>
+                      </>
                     )}
                   </li>
                   <li>
