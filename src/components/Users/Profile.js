@@ -6,6 +6,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import "../Store/Store.css";
 import { loadStripe } from "@stripe/stripe-js";
 import stripe from "stripe";
+import { userSub } from "../../services/user";
 
 const Profile = () => {
   const { status } = useParams();
@@ -23,11 +24,15 @@ const Profile = () => {
 
   //must check endpoint
   useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_API}/orders/current-user`)
-      .then((res) => {
-        setCurrentUser(res.data);
-      });
+    userSub.asObservable().subscribe((user) => {
+      if (user) {
+        axios
+          .get(`${process.env.REACT_APP_API}/orders/current-user`)
+          .then((res) => {
+            setCurrentUser(res.data);
+          });
+      }
+    });
   }, []);
 
   useEffect(() => {
