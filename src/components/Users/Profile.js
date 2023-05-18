@@ -78,12 +78,12 @@ const Profile = () => {
     const redirectURL =
       process.env.NODE_ENV === "development"
         ? "http://localhost:3000/profile/success"
-        : `${process.env.REACT_APP_API}/profile/success`;
+        : `${process.env.REACT_APP_FRONTEND}/profile/success`;
 
     const redirectURL1 =
       process.env.NODE_ENV === "development"
         ? "http://localhost:3000/profile/failed"
-        : `${process.env.REACT_APP_API}/profile/failed`;
+        : `${process.env.REACT_APP_FRONTEND}/profile/failed`;
 
     const sess = await secKey.checkout.sessions.create({
       payment_method_types: ["card"],
