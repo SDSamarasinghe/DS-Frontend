@@ -21,19 +21,24 @@ const Profile = () => {
   );
 
   const [currentUsers, setCurrentUser] = useState([]);
+  const [profile, setProfile] = useState(false);
 
   //must check endpoint
   useEffect(() => {
     userSub.asObservable().subscribe((user) => {
       if (user) {
-        axios
-          .get(`${process.env.REACT_APP_API}/orders/current-user`)
-          .then((res) => {
-            setCurrentUser(res.data);
-          });
+        setProfile(true);
       }
     });
   }, []);
+
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API}/orders/current-user`)
+      .then((res) => {
+        setCurrentUser(res.data);
+      });
+  }, [profile]);
 
   useEffect(() => {
     if (status === "success") {
