@@ -114,22 +114,40 @@ const Profile = () => {
   return (
     <div className="store-container d-flex justify-content-center p-5">
       <div>
+      <table
+          class="table mt-4 store-orders-container pdfdiv"
+          id="app-store-admin-table-header-44512135"
+        >
+          <thead className="store-admin-table-header">
+            <tr>
+              <th scope="col">Order ID</th>
+              <th scope="col">Customer ID</th>
+              <th scope="col">Satus</th>
+              <th scope="col">Products Details</th>
+              <th scope="col">Total Price</th>
+            </tr>
+          </thead>
+          <tbody>
         {currentUsers.map((data) => (
-          <div key={data.id}>
+          <tr key={data.id}>
             {console.log(data)}
-            <h3>Order ID: {data.id}</h3>
-            <p>User ID: {data.userId}</p>
-            <p>Status: {data.status}</p>
-            <h4>Products:</h4>
+            <td> {data.id}</td>
+            <td>{data.userId}</td>
+            <td>{data.status}</td>
+            <td>
+              <ul>
             {data.products.map((item) => (
-              <div key={item.product.id}>
+              <li key={item.product.id}>
                 <p>Name: {item.product.name}</p>
                 <p>Quantity: {item.quantity}</p>
                 <p>Price: {item.product.price}</p>
                 <p>Buy Price: {item.product.buyPrice}</p>
-              </div>
+             </li>
+             
             ))}
-
+            </ul>
+            </td>
+            
             {data.status === "Approved" && (
               <button
                 onClick={() => {
@@ -140,10 +158,14 @@ const Profile = () => {
                 Pay Bill
               </button>
             )}
+           
+            <td>
             <p>Total Price: {data.totalPrice}</p>
-            <hr />
-          </div>
+            </td>
+            </tr>
         ))}
+        </tbody>
+        </table>
       </div>
     </div>
   );
