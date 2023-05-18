@@ -45,7 +45,7 @@ const Profile = () => {
         confirmButtonColor: "#12af39",
         className: "store-swal-button",
       }).then(() => {
-        navigate("/profile");
+        navigate("/profile/");
       });
     }
 
@@ -57,7 +57,7 @@ const Profile = () => {
         confirmButtonColor: "#12af39",
         dangerMode: true,
       }).then(() => {
-        navigate("/profile");
+        navigate("/profile/");
       });
     }
   }, [status, navigate]);
