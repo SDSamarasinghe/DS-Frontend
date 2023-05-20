@@ -34,15 +34,24 @@ const StoreShoppingCart = () => {
           confirmButtonColor: "#12af39",
           className: "store-swal-button",
         }).then(() => {
-          navigate(`/store/store-admin-products`);
+          navigate(`/profile`);
         });
       })
       .catch((error) => {
-        console.log(error);
         alert("Something went wront. Please try again later.");
 
         return;
       });
+  };
+
+  const removeFromCart = (product) => {
+    const cartN = cart.filter((x) => {
+      return x.product.id !== product;
+    });
+
+    cartsub.next(cartN);
+    setCart(cartN);
+    writeStorage("cart", cartN);
   };
 
   return (
@@ -64,7 +73,8 @@ const StoreShoppingCart = () => {
                       </div>
 
                       {cart?.map((item) => (
-                        <div key={item.id}>
+                        <div key={item.product.id}>
+                          {console.log("item", item)}
                           <hr class="my-4" />
 
                           <div class="row mb-4 d-flex justify-content-between align-items-center">
@@ -114,11 +124,7 @@ const StoreShoppingCart = () => {
                                 }}
                                 class="fas fa-times"
                                 onClick={() => {
-                                  const cartN = cart.filter(
-                                    (x) => x.id !== item.id
-                                  );
-                                  cartsub.next(cartN);
-                                  writeStorage("cart", cartN);
+                                  removeFromCart(item.product.id);
                                 }}
                               >
                                 x
