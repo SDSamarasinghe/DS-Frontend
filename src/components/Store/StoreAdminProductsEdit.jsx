@@ -10,7 +10,6 @@ const StoreAdminProductsEdit = () => {
   const [price, setPrice] = useState("");
   const [stockCount, setStockCount] = useState("");
   const [buyPrice, setbuyPrice] = useState("");
-  const [sellPrice, setsellPrice] = useState("");
   const [category, setCategory] = useState("");
   const navigate = useNavigate();
   
@@ -27,7 +26,6 @@ const StoreAdminProductsEdit = () => {
       price,
       stockCount,
       buyPrice,
-      sellPrice,
       category,
     };
 
@@ -54,7 +52,6 @@ const StoreAdminProductsEdit = () => {
       setPrice(res.data.price);
       setStockCount(res.data.stockCount);
       setbuyPrice(res.data.buyPrice);
-      setsellPrice(res.data.sellPrice);
       setCategory(res.data.category);
     });
   }, [pid]);
@@ -148,20 +145,6 @@ const StoreAdminProductsEdit = () => {
                 }}
               />
             </div>
-
-            <div className="form-group my-4">
-              <label className="my-1">Sell Price</label>
-              <input
-                type="number"
-                className="form-control"
-                placeholder="Sell Price"
-                value={sellPrice}
-                onChange={(e) => {
-                  setsellPrice(e.target.value);
-                }}
-              />
-            </div>
-
             <div className="form-group my-2">
               <label className="my-1">Category</label>
               <input
