@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { writeStorage } from "@rehooks/local-storage";
+import swal from "sweetalert";
 
 import { cartsub } from "../../services/cart";
 import "./Store.css";
@@ -31,6 +32,14 @@ const StoreProductsDetails = () => {
       });
       cartsub.next(cart);
       writeStorage("cart", cart);
+
+      swal({
+        title: "Product added to the cart!",
+        icon: "success",
+        confirmButtonText: "OK",
+        confirmButtonColor: "#12af39",
+        className: "store-swal-button",
+      });
     }
   };
 
