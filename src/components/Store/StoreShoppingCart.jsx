@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./StoreCart.css";
 import { useEffect } from "react";
+import { useNavigate } from "react-router";
 import { cartsub } from "../../services/cart";
+import swal from "sweetalert";
 
 import { writeStorage } from "@rehooks/local-storage";
 
 const StoreShoppingCart = () => {
   const [cart, setCart] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     cartsub.asObservable().subscribe((x) => setCart(x));
@@ -24,7 +27,15 @@ const StoreShoppingCart = () => {
     await axios
       .post(`${process.env.REACT_APP_API}/orders`, order)
       .then((res) => {
-        alert("Order placed");
+        swal({
+          title: "Order Placed Successfully!",
+          icon: "success",
+          confirmButtonText: "OK",
+          confirmButtonColor: "#12af39",
+          className: "store-swal-button",
+        }).then(() => {
+          navigate(`/store/store-admin-products`);
+        });
       })
       .catch((error) => {
         console.log(error);
