@@ -124,6 +124,7 @@ const Profile = () => {
               <th scope="col">Customer ID</th>
               <th scope="col">Satus</th>
               <th scope="col">Products Details</th>
+              <th scope="col">Actions</th>
               <th scope="col">Total Price</th>
             </tr>
           </thead>
@@ -147,7 +148,7 @@ const Profile = () => {
             ))}
             </ul>
             </td>
-            
+            <td>
             {data.status === "Approved" && (
               <button
                 onClick={() => {
@@ -158,6 +159,8 @@ const Profile = () => {
                 Pay Bill
               </button>
             )}
+            </td>
+           
            
             <td>
             <p>Total Price: {data.totalPrice}</p>
