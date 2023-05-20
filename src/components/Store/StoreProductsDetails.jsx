@@ -47,7 +47,7 @@ const StoreProductsDetails = () => {
       <div className="d-flex">
         <div className=" store-product-details-container">
           <div className="product-details-content w-100 h-100 d-flex flex-column align-items-center justify-content-center">
-            <div class="row">
+            <div class="row" style={{width:"2000px"}}>
               <div class="col-4">
                 {/* Image */}
                 <img
@@ -55,6 +55,7 @@ const StoreProductsDetails = () => {
                   style={{
                     objectFit: "cover",
                     height: "500px",
+                    marginLeft:"-40px"
                   }}
                   src={product && product.image}
                   alt=""
@@ -66,7 +67,7 @@ const StoreProductsDetails = () => {
                   <h2 className="my-3" style={{ color: "#12af39" }}>
                     ${product && product.price}
                   </h2>
-                  <p className="my-3">{product && product.description}</p>
+                  <p className="my-3" style={{width:"600px"}}>{product && product.description}</p>
                   <div className="quantity-area col-4 my-3">
                     <label className="form-label">Choose your quantity:</label>
                     <input
@@ -74,7 +75,7 @@ const StoreProductsDetails = () => {
                       className={`form-control col-2 ${
                         quantity < 0 && "is-invalid"
                       }`}
-                      style={{ width: "100px" }}
+                      style={{ width: "4000px", marginRight:"-1500px" }}
                       value={quantity}
                       onChange={(e) => setQuantity(e.target.value)}
                     />
