@@ -56,11 +56,13 @@ const Navigator = () => {
                       <span>Home</span>
                     </Link>
                   </li>
+                 {user && (
                   <li>
                     <Link to="/store/store-shopping-cart">
                       <span>Cart</span>
                     </Link>
                   </li>
+                 ) }
                   {admin && (
                     <li className="has-children">
                       <a href="/about.html">
