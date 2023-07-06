@@ -1,84 +1,31 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "./Store.css";
-import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
+import { exportToCSV } from "../utils";
+import swal from "sweetalert";
 
 const StoreAdminOrders = () => {
   const [orders, setOrders] = useState([]);
-  
+
   //must check endpoint
   useEffect(() => {
-    axios
-      .get(`http://florage-api.pasinduprabhashitha.com/api/Order`)
-      .then((res) => {
-        setOrders(res.data);
-      });
+    axios.get(`${process.env.REACT_APP_API}/orders`).then((res) => {
+      setOrders(res.data);
+    });
   }, []);
 
-  const printPdf = () => {
-    const input = document.querySelector(".pdfdiv");
-    html2canvas(input).then((canvas) => {
-      var img = new Image();
-      const doc = new jsPDF("p", "mm", "a4");
-      doc.setTextColor(255, 0, 0);
-      doc.setFontSize(28);
-      doc.setTextColor(0, 0, 255);
-      doc.setFontSize(16);
-      doc.text(10, 70, "Agrotec LLC");
-      doc.setTextColor(0, 255, 0);
-      doc.setFontSize(12);
-      doc.text(145, 85, "Signature :");
-      //Date
-      var m_names = new Array(
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December"
-      );
+  const approveOrder = (orderid) => {
+    axios
+      .post(`${process.env.REACT_APP_API}/orders/approved?orderId=${orderid}`)
+      .then(() => {
+        swal("Order Approved Successfully!", {
+          icon: "success",
+        });
 
-      var today = new Date();
-      var seconds = today.getSeconds();
-      var minutes = today.getMinutes();
-      var hours = today.getHours();
-      var curr_date = today.getDate();
-      var curr_month = today.getMonth();
-      var curr_year = today.getFullYear();
-
-      today =
-        m_names[curr_month] +
-        " " +
-        curr_date +
-        "/ " +
-        curr_year +
-        " | " +
-        hours +
-        "h : " +
-        minutes +
-        "min : " +
-        seconds +
-        "sec";
-      var newdat = today;
-      doc.setTextColor(0, 0, 0);
-      doc.setFontSize(11);
-      doc.text(130, 93, newdat);
-      var imgHeight = (canvas.height * 200) / canvas.width;
-      const imgData = canvas.toDataURL("image/png");
-      doc.addImage(imgData, "JPEG", 5, 100, 200, imgHeight);
-      const date = Date().split(" ");
-      // we use a date string to generate our filename.
-      const dateStr =
-        "Florage Reports" + date[0] + date[1] + date[2] + date[3] + date[4];
-      doc.save(`report_${dateStr}.pdf`);
-    });
+        axios.get(`${process.env.REACT_APP_API}/orders`).then((res) => {
+          setOrders(res.data);
+        });
+      });
   };
 
   return (
@@ -88,8 +35,12 @@ const StoreAdminOrders = () => {
         <p> These are the orders recived inside this month </p>
 
         <div className="d-flex">
-          <button className="btn btn-success" onClick={printPdf}>
-            <i class="fa-solid fa-file-pdf mx-2"></i> Download Orders As PDF
+          <button
+            onClick={() => exportToCSV(orders, "Orders")}
+            type="button"
+            class="btn btn-primary"
+          >
+            Download Report
           </button>
         </div>
 
@@ -100,20 +51,31 @@ const StoreAdminOrders = () => {
           <thead className="store-admin-table-header">
             <tr>
               <th scope="col">Order ID</th>
-              <th scope="col">Customer Name</th>
+              <th scope="col">Customer ID</th>
               <th scope="col">Amount</th>
-              <th scope="col">Date</th>
+              <th scope="col">Status</th>
+              <th scope="col">Total Price</th>
+              <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
             {orders &&
               orders.map((order) => (
-                <tr>
-                  <div key={order.id}>
-                    <h2>Order {order.id}</h2>
+                <tr key={order.id}>
+                  {/* <div key={order.id}> */}
+                  <td>
+                    <h5>Order {order.id}</h5>
+                  </td>
+                  <td>
                     <p>User ID: {order.userId}</p>
+                  </td>
+                  <td>
                     <p>Total Price: {order.totalPrice}</p>
+                  </td>
+                  <td>
                     <p>Status: {order.status}</p>
+                  </td>
+                  <td>
                     <ul>
                       {order.products.map((item) => (
                         <li key={item.product.id}>
@@ -123,7 +85,20 @@ const StoreAdminOrders = () => {
                         </li>
                       ))}
                     </ul>
-                  </div>
+                  </td>
+                  <td>
+                    {order.status === "Pending" && (
+                      <button
+                        className="btn btn-success"
+                        onClick={() => {
+                          approveOrder(order.id);
+                        }}
+                      >
+                        <i class="fa-solid fa-check mx-2"></i> Approve Order
+                      </button>
+                    )}
+                  </td>
+                  {/* </div> */}
                 </tr>
               ))}
           </tbody>

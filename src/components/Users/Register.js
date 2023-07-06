@@ -8,13 +8,9 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [phoneNumber, setPhone] = useState("");
   const [error, setError] = useState(null);
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordsMatch, setPasswordsMatch] = useState(false);
   const navigate = useNavigate();
-
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
 
   const handleConfirmPasswordChange = (event) => {
     setConfirmPassword(event.target.value);
@@ -46,8 +42,8 @@ const Register = () => {
     var re = /\S+@\S+\.\S+/;
 
     if (re.test(user.email)) {
-      const { res, status } = await axios.post(
-        "http://florage-api.pasinduprabhashitha.com/api/auth/register",
+      const { status } = await axios.post(
+        `${process.env.REACT_APP_API}/auth/register`,
         user
       );
 
@@ -133,7 +129,7 @@ const Register = () => {
 
             <div className="mb-3">
               <label for="exampleInputPassword1" className="form-label">
-              Confirm Password:
+                Confirm Password:
               </label>
               <input
                 type="password"
@@ -143,7 +139,11 @@ const Register = () => {
                 onChange={handleConfirmPasswordChange}
               />
               <br />
-            {passwordsMatch ? <p>Passwords match!</p> : <p>Passwords do not match.</p>}   
+              {passwordsMatch ? (
+                <p>Passwords match!</p>
+              ) : (
+                <p>Passwords do not match.</p>
+              )}
             </div>
 
             <button

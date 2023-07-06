@@ -1,8 +1,10 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { userSub } from "../../services/user";
+import { adminSub, userSub } from "../../services/user";
 
+import { writeStorage } from "@rehooks/local-storage";
+import jwt_decode from "jwt-decode";
 const Login = () => {
   const [password, setPassword] = useState();
   const [email, setEmail] = useState();
@@ -21,11 +23,25 @@ const Login = () => {
     };
 
     await axios
-      .post("http://florage-api.pasinduprabhashitha.com/api/auth/login", user)
+      .post(`${process.env.REACT_APP_API}/auth/login`, user)
       .then((res) => {
         userSub.next(res.data.token);
+        writeStorage("florage-user", res.data.token);
         setWaiting(!waiting);
-        navigate("/store");
+
+        const role = jwt_decode(res.data.token)[
+          "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
+        ];
+
+        if (role === "Admin") {
+          adminSub.next(true);
+          writeStorage("florage-admin", true);
+        } else {
+          adminSub.next(false);
+          writeStorage("florage-admin", false);
+        }
+
+        navigate("/");
         return;
       })
       .catch((error) => {

@@ -2,43 +2,42 @@ import React from "react";
 import { useNavigate } from "react-router";
 import "./Store.css";
 
-const StoreProductSingle = ({ img, name, price, id }) => {
+const StoreProductSingle = ({ img, title, price, cat, id }) => {
   //must check endpoint
-    // const deleteProduct = async () => {
-    //   const { status } = await axios.delete(
-    //     `http://florage-api.pasinduprabhashitha.com/api/Products/${id}`
-    //   );
-  
-    //   alert("Product Deleted Successfully");
-    // };
+  // const deleteProduct = async () => {
+  //   const { status } = await axios.delete(
+  //     `http://florage-api.pasinduprabhashitha.com/api/Products/${id}`
+  //   );
+
+  //   alert("Product Deleted Successfully");
+  // };
   const navigate = useNavigate();
 
   return (
     <div className="product-card">
-      <div className="product-image">
-        <img src={img} alt="product" />
-      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+        <div class="hovereffect" style={{ width: "270px" }}>
+          <img className="product-image" src={img} alt="" />
+          <div class="overlay">
+            <h2>Florage Products</h2>
+            <p className="my-2" style={{ fontSize: "30px", color: "#ffffff" }}>
+              <b>{title}</b>
+            </p>
+            <p style={{ fontSize: "30px", color: "#12af39" }}>
+              <b>${price}</b>
+            </p>
 
-      <div
-        className="store-store-product-title"
-        style={{ color: "#6d6d6d", textAlign: "center" }}
-      >
-        <p className="my-2" style={{ fontSize: "18px", color: "#333" }}>
-          <b>{name}</b>
-        </p>
-        <p style={{ fontSize: "24px", color: "#12af39" }}>
-          <b>${price}</b>
-        </p>
-
-        <button
-          onClick={() => {
-            navigate(`/store/products/product/${id}`);
-          }}
-          id="store-store-details-button"
-          className="btn btn-success"
-        >
-          Details
-        </button>
+            <button
+              class="btn btn-primary"
+              href="A link to carousal image"
+              onClick={() => {
+                navigate(`/store/products/product/${id}`);
+              }}
+            >
+              Buy now
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -2,20 +2,15 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./StoreCart.css";
 import { useEffect } from "react";
+import { useNavigate } from "react-router";
 import { cartsub } from "../../services/cart";
-import { loadStripe } from "@stripe/stripe-js";
-import stripe from "stripe";
+import swal from "sweetalert";
 
-const pubkey =
-  "pk_test_51N0pauHJfferNMktTgB3tTiM2ZIJGzxoNZ5JH0J2DmU1WFf70Ywb3WLXtR9Fe1axXSFxzmkECoazUJsA4t8ng4gb00APeKTdwc";
-const promise = loadStripe(pubkey);
-
-const secKey = stripe(
-  "sk_test_51N0pauHJfferNMktadU200vTPM41Q7xccJJH57fgdNGLt5UmSEdhSJLl1LuIPMUWtkxXOaKtv1VNWV0liWG2prP100kzTHyPUw"
-);
+import { writeStorage } from "@rehooks/local-storage";
 
 const StoreShoppingCart = () => {
   const [cart, setCart] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     cartsub.asObservable().subscribe((x) => setCart(x));
@@ -30,57 +25,33 @@ const StoreShoppingCart = () => {
     };
 
     await axios
-      .post("http://florage-api.pasinduprabhashitha.com/api/orders", order)
+      .post(`${process.env.REACT_APP_API}/orders`, order)
       .then((res) => {
-        sendToCheck(res);
+        swal({
+          title: "Order Placed Successfully!",
+          icon: "success",
+          confirmButtonText: "OK",
+          confirmButtonColor: "#12af39",
+          className: "store-swal-button",
+        }).then(() => {
+          navigate(`/profile`);
+        });
       })
       .catch((error) => {
-        console.log(error);
         alert("Something went wront. Please try again later.");
 
         return;
       });
   };
 
-  const sendToCheck = async (res) => {
-    const items =
-      cart?.map((item) => {
-        return {
-          price_data: {
-            currency: "usd",
-            product_data: {
-              images: [item.product.image],
-              name: item.product.name,
-            },
-            unit_amount: item.product.price * 100,
-          },
-          quantity: item.quantity,
-        };
-      }) || [];
-
-    const stripe = await promise;
-
-    const redirectURL =
-      process.env.NODE_ENV === "development"
-        ? "http://localhost:3000"
-        : process.env.FRONTEND_DOMAIN;
-
-    console.log("res", res);
-
-    const sess = await secKey.checkout.sessions.create({
-      payment_method_types: ["card"],
-      line_items: items,
-      mode: "payment",
-      success_url: redirectURL,
-      cancel_url: redirectURL,
-      metadata: {
-        orderId: res.data.id,
-      },
+  const removeFromCart = (product) => {
+    const cartN = cart.filter((x) => {
+      return x.product.id !== product;
     });
 
-    await stripe?.redirectToCheckout({
-      sessionId: sess.id,
-    });
+    cartsub.next(cartN);
+    setCart(cartN);
+    writeStorage("cart", cartN);
   };
 
   return (
@@ -102,7 +73,8 @@ const StoreShoppingCart = () => {
                       </div>
 
                       {cart?.map((item) => (
-                        <div key={item.id}>
+                        <div key={item.product.id}>
+                          {console.log("item", item)}
                           <hr class="my-4" />
 
                           <div class="row mb-4 d-flex justify-content-between align-items-center">
@@ -146,9 +118,17 @@ const StoreShoppingCart = () => {
                               <h6 class="mb-0">€ {item.product.price}</h6>
                             </div>
                             <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                              <a href="#!" class="text-muted">
-                                <i class="fas fa-times">x</i>
-                              </a>
+                              <i
+                                style={{
+                                  cursor: "pointer",
+                                }}
+                                class="fas fa-times"
+                                onClick={() => {
+                                  removeFromCart(item.product.id);
+                                }}
+                              >
+                                x
+                              </i>
                             </div>
                           </div>
 

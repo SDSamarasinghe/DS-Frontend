@@ -9,7 +9,6 @@ const StoreOrderForm = () => {
   const [subTotal, setSubTotal] = useState("");
   const [delivery, setDelivery] = useState("");
   const [product, setProduct] = useState();
-  const [user, setUser] = useState();
   const [valid, setValid] = useState([]);
   const navigate = useNavigate();
 
@@ -45,14 +44,16 @@ const StoreOrderForm = () => {
 
     //must check endpoint
     axios
-      .get(`http://florage-api.pasinduprabhashitha.com/api/products/${paramsProduct}`)
+      .get(
+        `${process.env.REACT_APP_API}/products/${paramsProduct}`
+      )
       .then((res) => {
         setProduct(res.data);
       });
   }, [paramsProduct, price, quantity]);
 
   //must check endpoint
-  
+
   const onFormChange = (e) => {
     const { name, value } = e.target;
 
@@ -106,10 +107,10 @@ const StoreOrderForm = () => {
     } else {
       setValid([]);
     }
-//must check endpoint
+    //must check endpoint
     e.preventDefault();
     axios
-      .post("http://florage-api.pasinduprabhashitha.com/api/orders/", order)
+      .post(`${process.env.REACT_APP_API}/orders/`, order)
       .then((res) => {
         swal({
           title:
@@ -273,9 +274,9 @@ const StoreOrderForm = () => {
             />
             <div class="invalid-feedback">Please enter a valid zip code.</div>
           </div>
-          
+
           <div class="col-12"></div>
-          <br/>
+          <br />
           <div class="col-12">
             <button
               type="submit"

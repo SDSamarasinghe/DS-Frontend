@@ -1,6 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import { writeStorage } from "@rehooks/local-storage";
+import swal from "sweetalert";
+
 import { cartsub } from "../../services/cart";
 import "./Store.css";
 
@@ -8,14 +11,12 @@ const StoreProductsDetails = () => {
   const [quantity, setQuantity] = useState(0);
   const [product, setProduct] = useState();
   let params = useParams();
-  
+
   //let navigate = useNavigate();
 
   useEffect(() => {
     axios
-      .get(
-        `http://florage-api.pasinduprabhashitha.com/api/products/${params.id}`
-      )
+      .get(`${process.env.REACT_APP_API}/products/${params.id}`)
       .then((res) => {
         setProduct(res.data);
       });
@@ -30,6 +31,15 @@ const StoreProductsDetails = () => {
         quantity,
       });
       cartsub.next(cart);
+      writeStorage("cart", cart);
+
+      swal({
+        title: "Product added to the cart!",
+        icon: "success",
+        confirmButtonText: "OK",
+        confirmButtonColor: "#12af39",
+        className: "store-swal-button",
+      });
     }
   };
 
@@ -51,7 +61,6 @@ const StoreProductsDetails = () => {
                   className="product-details-img"
                   style={{
                     objectFit: "cover",
-                    height: "500px",
                   }}
                   src={product && product.image}
                   alt=""
@@ -68,11 +77,9 @@ const StoreProductsDetails = () => {
                     <label className="form-label">Choose your quantity:</label>
                     <input
                       type="number"
-                      className={`form-control col-2 ${
-                        quantity < 0 && "is-invalid"
-                      }`}
-                      style={{ width: "100px" }}
+                      className={`form-control ${quantity < 0 && "is-invalid"}`}
                       value={quantity}
+                      style={{ width: "100px" }}
                       onChange={(e) => setQuantity(e.target.value)}
                     />
                     <div class="invalid-feedback">

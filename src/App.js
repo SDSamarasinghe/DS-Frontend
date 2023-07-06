@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { addUser, userSub } from "./services/user";
+import { addUser, adminSub, userSub } from "./services/user";
 
 import "./App.css";
 
@@ -12,6 +12,7 @@ import Footer from "./components/Footer";
 //User imports
 import Login from "./components/Users/Login";
 import Register from "./components/Users/Register";
+import Profile from "./components/Users/Profile";
 
 //store imports
 import StorePaymentScreen from "./components/Store/StorePaymentScreen";
@@ -21,18 +22,29 @@ import StoreShoppingCart from "./components/Store/StoreShoppingCart";
 import StoreAdminOrders from "./components/Store/StoreAdminOrders";
 import StoreAdminPayments from "./components/Store/StoreAdminPayments";
 import StoreHome from "./components/Store/StoreHome";
+import StoreAdminCommisions from "./components/Store/StoreAdminCommision";
 import StoreProducts from "./components/Store/StoreProducts";
 import StoreProductsDetails from "./components/Store/StoreProductsDetails";
 import StoreOrderForm from "./components/Store/StoreOrderForm";
 import StoreAddProductForm from "./components/Store/StoreAddProductForm";
+import { useLocalStorage } from "@rehooks/local-storage";
+import { cartsub } from "./services/cart";
 
 function App() {
+  const [user] = useLocalStorage("florage-user");
+  const [cart] = useLocalStorage("cart");
+  const [admin] = useLocalStorage("florage-admin");
+
   useEffect(() => {
+    userSub.next(user);
+    cartsub.next(cart);
+    adminSub.next(admin);
     userSub.asObservable().subscribe((user) => {
       if (user) {
         axios.defaults.headers.common["Authorization"] = addUser(user);
       }
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -41,8 +53,11 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<Register />} />
+        <Route path="/profile" element={<Profile />}>
+          <Route path=":status" element={<Profile />} />
+        </Route>
 
-        <Route path="/store" element={<StoreHome />} />
+        <Route path="/" element={<StoreHome />} />
         <Route path="/store/products/:category" element={<StoreProducts />} />
         <Route
           path="/store/products/product/:id"
@@ -80,6 +95,8 @@ function App() {
           path="/store/store-shopping-cart"
           element={<StoreShoppingCart />}
         />
+
+        <Route path="/store/commisions" element={<StoreAdminCommisions />} />
       </Routes>
       <Footer />
     </BrowserRouter>
